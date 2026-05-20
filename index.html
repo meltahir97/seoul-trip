@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Seoul — Interactive Guide</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root {
+  --bg: #FAF8F3;
+  --surface: #FFFFFF;
+  --ink: #1A1A1A;
+  --ink-2: #4A4A4A;
+  --ink-3: #8A8A8A;
+  --border: #E5E2D8;
+  --border-2: #D4D0C2;
+  --accent: #C73E3A;
+  --accent-soft: #FBEFEE;
+
+  --c-food: #D14545;
+  --c-kbbq: #8E2A2A;
+  --c-cafe: #9C7A4F;
+  --c-bar: #6B3F8C;
+  --c-club: #C73178;
+  --c-fine: #B86F1E;
+  --c-retail: #2E5A87;
+  --c-brand: #1E3F65;
+  --c-beauty: #1A8A7E;
+  --c-museum: #3B7536;
+  --c-sight: #5C8A3B;
+  --c-market: #B88824;
+  --c-daytrip: #555555;
+
+  --src-bbsp-bg: #E6F1FB; --src-bbsp-fg: #0C447C;
+  --src-lp-bg: #FBEAF0;   --src-lp-fg: #72243E;
+  --src-ak-bg: #FAEEDA;   --src-ak-fg: #633806;
+  --src-mk-bg: #EAF3DE;   --src-mk-fg: #27500A;
+  --src-eb-bg: #EEEDFE;   --src-eb-fg: #3C3489;
+  --src-nw-bg: #FAECE7;   --src-nw-fg: #712B13;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.serif { font-family: "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif; }
+
+header {
+  padding: 18px 22px 14px;
+  border-bottom: 0.5px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+header h1 {
+  font-family: "Iowan Old Style", "Apple Garamond", Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+header h1 .kr {
+  color: var(--accent);
+  margin-left: 6px;
+  font-size: 22px;
+}
+header .meta {
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+header .meta strong { color: var(--ink-2); font-weight: 500; }
+
+.controls {
+  background: var(--surface);
+  padding: 12px 22px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.control-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  font-weight: 500;
+  min-width: 78px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 14px;
+  border: 0.5px solid var(--border-2);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--ink-2);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: var(--ink-3); }
+.chip.active {
+  background: var(--ink);
+  color: var(--surface);
+  border-color: var(--ink);
+}
+.chip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-3);
+}
+.chip.cat-food .dot { background: var(--c-food); }
+.chip.cat-kbbq .dot { background: var(--c-kbbq); }
+.chip.cat-cafe .dot { background: var(--c-cafe); }
+.chip.cat-bar .dot { background: var(--c-bar); }
+.chip.cat-club .dot { background: var(--c-club); }
+.chip.cat-fine .dot { background: var(--c-fine); }
+.chip.cat-retail .dot { background: var(--c-retail); }
+.chip.cat-brand .dot { background: var(--c-brand); }
+.chip.cat-beauty .dot { background: var(--c-beauty); }
+.chip.cat-museum .dot { background: var(--c-museum); }
+.chip.cat-sight .dot { background: var(--c-sight); }
+.chip.cat-market .dot { background: var(--c-market); }
+.chip.cat-daytrip .dot { background: var(--c-daytrip); }
+
+.chip.src-BBSP { background: var(--src-bbsp-bg); color: var(--src-bbsp-fg); border-color: transparent; }
+.chip.src-LP   { background: var(--src-lp-bg);   color: var(--src-lp-fg);   border-color: transparent; }
+.chip.src-AK   { background: var(--src-ak-bg);   color: var(--src-ak-fg);   border-color: transparent; }
+.chip.src-MK   { background: var(--src-mk-bg);   color: var(--src-mk-fg);   border-color: transparent; }
+.chip.src-EB   { background: var(--src-eb-bg);   color: var(--src-eb-fg);   border-color: transparent; }
+.chip.src-NW   { background: var(--src-nw-bg);   color: var(--src-nw-fg);   border-color: transparent; }
+.chip.src-active { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+.chip.cluster { background: var(--surface); }
+.chip.cluster.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+.actions { margin-left: auto; display: flex; gap: 8px; }
+.btn-reset {
+  font-size: 12px;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 6px;
+}
+.btn-reset:hover { color: var(--ink); }
+
+.stat-bar {
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.stat-bar strong { color: var(--ink); font-weight: 500; }
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  height: calc(100vh - 178px);
+  min-height: 480px;
+}
+#map { background: #DDD7C7; }
+.leaflet-container { font-family: inherit; }
+
+.sidebar {
+  border-left: 0.5px solid var(--border);
+  background: var(--surface);
+  overflow-y: auto;
+}
+.sidebar-header {
+  padding: 14px 18px 8px;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  border-bottom: 0.5px solid var(--border);
+  z-index: 5;
+}
+.sidebar-header h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sidebar-header .sub {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+.cards { padding: 6px 0; }
+.card {
+  padding: 11px 18px;
+  border-bottom: 0.5px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.card:hover { background: var(--bg); }
+.card.highlighted { background: var(--accent-soft); }
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.card-pin {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.card-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.card-rank {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+}
+.card-meta {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.card-cat { color: var(--ink-2); }
+.card-sources {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+}
+.src-badge {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+.src-badge.s-BBSP { background: var(--src-bbsp-bg); color: var(--src-bbsp-fg); }
+.src-badge.s-LP   { background: var(--src-lp-bg);   color: var(--src-lp-fg); }
+.src-badge.s-AK   { background: var(--src-ak-bg);   color: var(--src-ak-fg); }
+.src-badge.s-MK   { background: var(--src-mk-bg);   color: var(--src-mk-fg); }
+.src-badge.s-EB   { background: var(--src-eb-bg);   color: var(--src-eb-fg); }
+.src-badge.s-NW   { background: var(--src-nw-bg);   color: var(--src-nw-fg); }
+
+.empty-state {
+  padding: 32px 22px;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+/* Map pin styles */
+.pin-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+.pin-marker.consensus {
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 2px white, 0 1px 4px rgba(0,0,0,0.35);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  padding: 2px;
+}
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  width: 260px !important;
+}
+.popup-title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.popup-title .kr {
+  color: var(--ink-3);
+  font-weight: 400;
+  margin-left: 4px;
+  font-size: 13px;
+}
+.popup-rank {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+.popup-meta {
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 7px;
+}
+.popup-meta .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.popup-notes {
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.55;
+  margin-bottom: 7px;
+}
+.popup-insider {
+  background: #FFF6E5;
+  border-left: 2px solid #BE8B1A;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: #5C3A05;
+  margin: 6px 0;
+  border-radius: 0 4px 4px 0;
+}
+.popup-insider strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.popup-addr {
+  font-size: 11px;
+  color: var(--ink-3);
+  border-top: 0.5px solid var(--border);
+  padding-top: 6px;
+  margin-top: 6px;
+}
+.popup-addr a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 11px;
+}
+.popup-addr a:hover { text-decoration: underline; }
+.popup-sources {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.cluster-banner {
+  background: var(--accent);
+  color: white;
+  padding: 8px 22px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+.cluster-banner.active { display: flex; }
+.cluster-banner strong { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; white-space: nowrap; }
+.cluster-banner .order { opacity: 0.85; font-size: 12px; }
+
+@media (max-width: 760px) {
+  header { padding: 12px 16px 10px; }
+  header h1 { font-size: 22px; }
+  .controls { padding: 10px 16px; }
+  .control-label { min-width: 0; font-size: 10px; }
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55vh 1fr;
+    height: auto;
+    min-height: calc(100vh - 178px);
+  }
+  .sidebar {
+    border-left: none;
+    border-top: 0.5px solid var(--border);
+    max-height: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="serif">Seoul<span class="kr">서울</span></h1>
+  <span class="meta">May 19–28 · base: <strong>Itaewon</strong> · <strong id="spot-count">0</strong> spots · 6 sources</span>
+</header>
+
+<div class="controls">
+  <div class="control-row" id="cat-filters">
+    <span class="control-label">Category</span>
+  </div>
+  <div class="control-row" id="src-filters">
+    <span class="control-label">Source</span>
+  </div>
+  <div class="control-row" id="cluster-filters">
+    <span class="control-label">Day plan</span>
+    <button class="btn-reset" id="reset-btn">reset all</button>
+  </div>
+</div>
+
+<div class="cluster-banner" id="cluster-banner">
+  <strong id="cluster-name"></strong>
+  <span class="order" id="cluster-order"></span>
+</div>
+
+<div class="main">
+  <div id="map"></div>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Spots</h2>
+      <div class="sub" id="visible-count">— visible</div>
+    </div>
+    <div class="cards" id="cards"></div>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const CAT = {
+  food:    { label: "Food",        color: "#D14545" },
+  kbbq:    { label: "KBBQ",        color: "#8E2A2A" },
+  cafe:    { label: "Café",        color: "#9C7A4F" },
+  bar:     { label: "Bar",         color: "#6B3F8C" },
+  club:    { label: "Club",        color: "#C73178" },
+  fine:    { label: "Fine dining", color: "#B86F1E" },
+  retail:  { label: "Retail",      color: "#2E5A87" },
+  brand:   { label: "Brand",       color: "#1E3F65" },
+  beauty:  { label: "Beauty",      color: "#1A8A7E" },
+  museum:  { label: "Museum",      color: "#3B7536" },
+  sight:   { label: "Sight",       color: "#5C8A3B" },
+  market:  { label: "Market",      color: "#B88824" },
+  daytrip: { label: "Day trip",    color: "#555555" }
+};
+
+const SOURCES = {
+  BBSP: "Blackbird Spyplane",
+  LP:   "Lauren Paik",
+  AK:   "Alex Kim",
+  MK:   "Michelle Kwak",
+  EB:   "Eva Boal",
+  NW:   "Nick Wu"
+};
+
+const CLUSTERS = {
+  A: { name: "Northern Palaces — Bukchon · Anguk · Seochon", order: "Gyeongbokgung → Bukchon walk → Bar Cham or Onjium for dinner" },
+  B: { name: "Central — Myeongdong · Namdaemun · Namsan",    order: "Gwangjang Market → Myeongdong Kyoja → Namdaemun → N Seoul Tower sunset" },
+  C: { name: "Gangnam half-day",                             order: "COEX/Starfield → Hyundai → Sigol Yachae lunch → Apgujeong speakeasies evening" },
+  D: { name: "West — Hongdae · Mangwon · Yeonnam",           order: "Mangwon Market → Anthracite Hongdae → Yeonnam cafés → Chicken Rock dinner" },
+  E: { name: "East — Seongsu · Hannamdong · Itaewon",        order: "Seongsu shopping + Cafe Onion → Seoul Forest → Leeum → Nari's House → Itaewon bars" },
+  F: { name: "Apgujeong speakeasy crawl",                    order: "Zest (ask for Noah) → Pine & Co → Le Chamber → Courte" }
+};
+
+const spots = [
+  // FOOD
+  { name: "Myeongdong Kyoja",        kr: "명동교자",         cat: "food",    area: "Myeongdong",           lat: 37.5635, lng: 126.9854, src: ["BBSP","NW"],             notes: "Knife-cut noodles (kalguksu) since 1966. Order kalguksu + mandu. Cash preferred, closed Sundays.", addr: "14 Myeongdong 10-gil, Jung-gu", cluster: "B" },
+  { name: "Woo Lae Oak",             kr: "우래옥",           cat: "food",    area: "Euljiro",              lat: 37.5663, lng: 126.9913, src: ["BBSP"],                   notes: "Since 1946. Order the naengmyeon (cold buckwheat noodles) — this is the move, not the BBQ. Reservations recommended.", addr: "Euljiro 4-ga" },
+  { name: "Hanchu",                  kr: "한추",             cat: "food",    area: "Sinsa",                lat: 37.5215, lng: 126.9912, src: ["BBSP"],                   notes: "Famous fried chicken on Garosu-gil. Bone-in + whole green peppers — grassy heat cuts the oil. Opens 5pm.", addr: "549-9 Sinsa-dong, Gangnam-gu" },
+  { name: "Chicken Rock",            kr: "치킨락",           cat: "food",    area: "Yeonnam",              lat: 37.5640, lng: 126.9250, src: ["BBSP"],                   notes: "Neighbourhood gem with a warm owner. Fried chicken + tteokbokki. Still by Hand clothes shop downstairs.", addr: "238-1 Donggyo-ro, Mapo-gu", cluster: "D" },
+  { name: "Mangwon Market",          kr: "망원시장",         cat: "market",  area: "Mangwon",              lat: 37.5566, lng: 126.9013, src: ["BBSP"],                   notes: "Local traditional market — non-touristy alternative to Gwangjang. Banchan, tteokbokki, produce. Cash preferred.", addr: "14 Mangwon-ro, Mapo-gu", cluster: "D" },
+  { name: "Nari's House",            kr: "나리의집",         cat: "kbbq",    area: "Hangangjin",           lat: 37.5395, lng: 126.9999, src: ["MK"],                     notes: "Est. 1985. Naengsam (frozen samgyeopsal) — ultra-thin frozen pork belly, a 40-year institution. Expect a queue. Open 2pm–midnight, every other Sun closed.", addr: "Near Hangangjin Station", cluster: "E" },
+  { name: "Che Budong Sujebi",       kr: "체부동수제비",     cat: "food",    area: "Seochon",              lat: 37.5810, lng: 126.9700, src: ["MK"],                     notes: "Sujebi — hand-torn noodle soup in rich anchovy broth. One of Korea's most comforting dishes. Verify location via Naver.", addr: "Confirm via Naver" },
+  { name: "Sigol Yachae Doenjjang",  kr: "시골야채된장",     cat: "food",    area: "Gangnam Station",      lat: 37.4995, lng: 127.0285, src: ["NW"],                     notes: "NW's friend has loved this for doenjang jjigae. Humble local spot, the kind tourists never find.", addr: "11 Gangnam-daero 69-gil, 1F Sammi Bldg, Seocho-gu", cluster: "C" },
+  { name: "Woojinga",                kr: "우진가",           cat: "kbbq",    area: "Gangnam / Cheongdam",  lat: 37.5240, lng: 127.0460, src: ["NW"],                     notes: "NW went here personally — premium hanwoo beef. Marbled like A5 wagyu but meatier. Comparable to NYC's Cote at lower price. Book ahead.", addr: "Verify via Naver (우진가)" },
+  { name: "Howang",                  kr: "호왕",             cat: "kbbq",    area: "Gangnam / Cheongdam",  lat: 37.5220, lng: 127.0445, src: ["NW"],                     notes: "Same tier as Woojinga per NW's Gangnam-local friend. All-hanwoo, high quality. Reservations needed.", addr: "Verify via Naver (호왕)" },
+  { name: "Hanwadam Black",          kr: "한와담 블랙",      cat: "kbbq",    area: "Hannamdong",           lat: 37.5350, lng: 126.9990, src: ["NW"],                     notes: "Premium aged-hanwoo sub-brand of Hanwadam. Both branches within 50m. Typically packed — reserve.", addr: "65-1 Dokseodang-ro area, Yongsan-gu", cluster: "E" },
+  { name: "Gaggangsullae",           kr: "강강술래",         cat: "kbbq",    area: "Hongdae",              lat: 37.5535, lng: 126.9210, src: ["NW"],                     notes: "NW went for galbi — grandmothers eating during the day is the quality signal. Less premium than Woojinga but phenomenal. Galbi is the order.", addr: "369-10 Seogyo-dong, Mapo-gu", cluster: "D" },
+  { name: "Obaltan",                 kr: "오발탄",           cat: "kbbq",    area: "Yeoksam",              lat: 37.5005, lng: 127.0360, src: ["NW"],                     notes: "Gopchang, makchang, daechang — offal KBBQ. Charred, funky, chewy. Completely different from beef/pork belly.", addr: "Near Yeoksam Station — verify via Naver (오발탄 역삼)", cluster: "C" },
+  { name: "Balwoo Gongyang",         kr: "발우공양",         cat: "fine",    area: "Anguk",                lat: 37.5720, lng: 126.9830, src: ["EB"],   rank: "Michelin ★ (2017–19)", notes: "The only temple food restaurant in Korea run by the Jogye Order. Plant-based (no garlic/onion/leek). Private rooms, intentional silence. Courses ₩30k–₩90k. Closed Sundays. Book a month ahead.", addr: "56 Ujeongguk-ro, Jongno-gu (5F Templestay Center)", cluster: "A" },
+
+  // CAFÉS
+  { name: "Anthracite Coffee",       kr: "앤트러사이트",     cat: "cafe",    area: "Hapjeong",             lat: 37.5497, lng: 126.9143, src: ["BBSP","MK"],              notes: "Seoul's most architecturally ambitious coffee brand. Former industrial spaces converted with serious design intent. Hongdae branch overlooks a sculptural garden.", addr: "Hongdae/Hapjeong main branch + others", cluster: "D" },
+  { name: "Archivist Café",          kr: "",                 cat: "cafe",    area: "Seochon",              lat: 37.5855, lng: 126.9690, src: ["MK"],                     notes: "Known for Einspänner (Vienna-style coffee with thick whipped cream). Dark green walls, small space — go early.", addr: "52 Hyoja-ro 13-gil, Jongno-gu", cluster: "A" },
+  { name: "Cheongsudang",            kr: "청수당",           cat: "cafe",    area: "Ikseon-dong",          lat: 37.5710, lng: 126.9890, src: ["MK"],                     notes: "One of Seoul's most photogenic cafés — hanok conversion with bamboo entrance, stone path over a stream, soufflé cakes.", addr: "Ikseon-dong hanok district" },
+  { name: "Nudake",                  kr: "누데이크",         cat: "cafe",    area: "Apgujeong",            lat: 37.5230, lng: 127.0340, src: ["MK"],                     notes: "Conceptual café directly below the Gentle Monster flagship. Sculptural pastries (the 'Peak' croissant is the photo). Shares a building with Tamburins.", addr: "Haus Dosan, Apgujeong" },
+  { name: "Cafe Onion",              kr: "어니언",           cat: "cafe",    area: "Anguk",                lat: 37.5790, lng: 126.9850, src: ["MK"],                     notes: "Bakery-café in a restored hanok near Bukchon. The pandoro covered in powdered sugar is the order. Original branch is in Seongsu in a former metal factory.", addr: "5 Gye-dong-gil, Jongno-gu (Anguk) + Seongsu original", cluster: "A" },
+
+  // BARS
+  { name: "Mr. Ahn's Makgeolli",     kr: "안씨막걸리",       cat: "bar",     area: "Euljiro",              lat: 37.5660, lng: 126.9870, src: ["BBSP","EB"],              notes: "Craft makgeolli bar + dinner spot. Part of the broader makgeolli revival. Verify exact branch — multiple locations.", addr: "Confirm via Naver" },
+  { name: "Ace Four Club",           kr: "에이스포클럽",     cat: "bar",     area: "Euljiro",              lat: 37.5670, lng: 126.9920, src: ["BBSP"],                   notes: "Serious craft cocktail bar with window seats overlooking Eulji-ro. Part of the Euljiro creative revival.", addr: "105 Eulji-ro, Jung-gu" },
+  { name: "Gong Gan",                kr: "공간",             cat: "bar",     area: "Anguk",                lat: 37.5763, lng: 126.9852, src: ["BBSP"], rank: "#89 Asia",  notes: "Cocktail bar in a hanok with a glass inner courtyard. The room is the point as much as the drinks.", addr: "Near Anguk Station, Jongno-gu", cluster: "A" },
+  { name: "Kompakt Record Bar",      kr: "콤팩트 레코드 바", cat: "bar",     area: "Sinsa",                lat: 37.5210, lng: 127.0235, src: ["BBSP"],                   notes: "Vinyl-focused bar run by Jinmoo of 360 Sounds DJ crew. NO connection to the Cologne label despite the name. Two Sinsa locations + Seongsu.", addr: "Sinsa + Seongsu locations" },
+  { name: "Stoked & Stoned",         kr: "",                 cat: "bar",     area: "Hannamdong",           lat: 37.5340, lng: 126.9985, src: ["LP"],                     notes: "Surf/skate-aesthetic cocktail bar. Casual, late, music-forward.", addr: "Hannamdong", cluster: "E" },
+  { name: "Wild Duck Canteen",       kr: "",                 cat: "bar",     area: "Haebangchon",          lat: 37.5410, lng: 126.9870, src: ["LP"],                     notes: "HBC institution — diner-style late-night spot. Burgers, drinks, decent crowd.", addr: "33/44-8 Sinheung-ro, Yongsan-gu", cluster: "E" },
+  { name: "Komfy",                   kr: "",                 cat: "bar",     area: "Seongsu",              lat: 37.5442, lng: 127.0560, src: ["LP"],                     notes: "Sofas, low-key music, no pressure to move on. The name promises the experience.", addr: "Seongsu-dong", cluster: "E" },
+  { name: "Vita",                    kr: "",                 cat: "bar",     area: "Itaewon",              lat: 37.5340, lng: 126.9940, src: ["LP"],                     notes: "Natural wine bar. Location not independently verified — verify via Naver before going.", addr: "Verify via Naver" },
+  { name: "Times",                   kr: "",                 cat: "bar",     area: "Itaewon",              lat: 37.5345, lng: 126.9945, src: ["LP"],                     notes: "Cocktail-forward late bar. Location not independently verified.", addr: "Verify via Naver" },
+  { name: "Orgasm Valley",           kr: "",                 cat: "bar",     area: "Sinsa",                lat: 37.5200, lng: 127.0220, src: ["LP"],                     notes: "Hip-hop lounge. Late, loud, dancing.", addr: "655 Sinsa-dong, Gangnam-gu" },
+  { name: "Zest",                    kr: "",                 cat: "bar",     area: "Apgujeong",            lat: 37.5240, lng: 127.0376, src: ["LP","AK","MK","EB"], rank: "#2 Asia · #16 World", notes: "The single most-recommended place in this guide — four independent sources. Zero-waste philosophy: house-distilled gin from Korean botanicals, own-made sodas, city honey from Seoul beehives.", addr: "B1, 26 Dosan-daero 55-gil, Gangnam-gu", insider: "Ask for Noah (co-owner). Mention Alexander Kim — he's Bobby Min's cousin. Reservations essential.", cluster: "F" },
+  { name: "VIBD BLVD",               kr: "",                 cat: "bar",     area: "Yongridan-gil",        lat: 37.5340, lng: 126.9720, src: ["EB"],                     notes: "Vinyl sanctuary — walls of LPs, DJ booth at the bar. 4-person table limit. Write song requests on paper. VIBD Signature (cranberry) is the house cocktail. Doors 8:30pm.", addr: "2F, 164 Hangang-daero, Yongsan-gu (near Samgakji Station L6)" },
+  { name: "Pine & Co",               kr: "파인앤코",         cat: "bar",     area: "Apgujeong",            lat: 37.5258, lng: 127.0383, src: ["AK"], rank: "#50 Asia",   notes: "Hidden Apgujeong alley — find the entrance, press a button, descend. Service bar like a sci-fi R&D lab; room is warm leather and candles. House-distilled gin. Closed Mondays.", addr: "B1, 33 Seolleung-ro 157-gil, Gangnam-gu", insider: "AK: 'One of my two favorite bars in the world.'", cluster: "F" },
+  { name: "Le Chamber",              kr: "르챔버",           cat: "bar",     area: "Apgujeong",            lat: 37.5238, lng: 127.0378, src: ["AK"],                     notes: "Speakeasy behind a bookshelf — pull the correct book. 50-seat room: high ceilings, chandeliers, live piano. 200+ whiskies. Founded by world-champ bartenders. Cover charge.", addr: "B1, 42 Dosan-daero 55-gil, Gangnam-gu", insider: "AK: 'Finding it is a lot of fun.'", cluster: "F" },
+  { name: "Bar Cham",                kr: "바 참",            cat: "bar",     area: "Seochon",              lat: 37.5805, lng: 126.9695, src: ["MK"], rank: "#6 Asia",    notes: "Set in a traditional hanok. Korean spirits-first: soju, makgeolli, provincial spirits used in inventive cocktails. Menu changes seasonally. Owner BJ Lim. Small — book ahead or wait at sister bar Pomme nearby.", addr: "34 Jahamun-ro 7-gil, Tongin-dong, Jongno-gu", cluster: "A" },
+  { name: "Courte",                  kr: "",                 cat: "bar",     area: "Apgujeong",            lat: 37.5250, lng: 127.0367, src: ["MK"],                     notes: "Operates as café (Courte Cafe) + bar (Courte Sidebar). Thu–Sat only, noon to late. RSVP by DM. Part of the Apgujeong crawl cluster.", addr: "B1, 13 Dosan-daero 51-gil, Gangnam-gu", cluster: "F" },
+
+  // CLUBS
+  { name: "Cakeshop",                kr: "",                 cat: "club",    area: "Itaewon",              lat: 37.5345, lng: 126.9942, src: ["LP"],                     notes: "Seoul's most internationally known club. Underground, no-frills room; serious DJ bookings (techno, house, experimental). Arrive after 1am. Passport required.", addr: "Itaewon", cluster: "E" },
+  { name: "Hills & Europa",          kr: "",                 cat: "club",    area: "Haebangchon",          lat: 37.5408, lng: 126.9875, src: ["LP"],                     notes: "Two interconnected rooms — Hills (house/techno) + Europa (experimental). Bigger and slightly less scene-at-the-door than Cakeshop.", addr: "35 Sinheung-ro, Yongsan-gu", cluster: "E" },
+  { name: "Kockiri",                 kr: "코끼리",           cat: "club",    area: "Itaewon",              lat: 37.5346, lng: 126.9938, src: ["LP"],                     notes: "Active again per their Instagram. Hip-hop and R&B-leaning. Verify hours before going.", addr: "Itaewon", cluster: "E" },
+  { name: "Henz Club",               kr: "",                 cat: "club",    area: "Hongdae",              lat: 37.5475, lng: 126.9230, src: ["LP"],                     notes: "One of Seoul's most established clubs. Hip-hop/trap nights alongside electronic.", addr: "Sangsu-dong, adjacent Hongdae", cluster: "D" },
+
+  // FINE DINING
+  { name: "Mingles",                 kr: "밍글스",           cat: "fine",    area: "Cheongdam",            lat: 37.5267, lng: 127.0455, src: ["LP"], rank: "Michelin ★★★", notes: "Chef Mingoo Kang's restaurant — modern Korean fine dining built on jang (fermented pastes). One of Asia's most consistently celebrated kitchens.", addr: "Cheongdam-dong" },
+  { name: "Mosu",                    kr: "모수",             cat: "fine",    area: "Hannamdong",           lat: 37.5320, lng: 127.0030, src: ["LP"], rank: "Michelin ★★★", notes: "Chef Sung Anh's Seoul flagship. Korean sensibility filtered through Western fine-dining, then stripped back. Counter seating is the best seat.", addr: "Hannamdong", cluster: "E" },
+  { name: "Onjium",                  kr: "온지음",           cat: "fine",    area: "Samcheongdong",        lat: 37.5830, lng: 126.9810, src: ["LP"], rank: "Michelin ★",   notes: "Rooted in royal court cuisine (궁중요리), connected to Arumjigi's cultural research. The most culturally grounded tasting menu in Seoul.", addr: "Samcheongdong, Jongno-gu", cluster: "A" },
+
+  // RETAIL / SHOPPING
+  { name: "Nothing Written",         kr: "",                 cat: "retail",  area: "Hannamdong",           lat: 37.5350, lng: 127.0008, src: ["BBSP"],                   notes: "Women's clothing store designed to feel like shopping a friend's wardrobe. Flagship is 'House & Garden Hannam.'", addr: "14-5 Hannam-daero 40-gil, Yongsan-gu", cluster: "E" },
+  { name: "Boon the Shop",           kr: "분더샵",           cat: "retail",  area: "Cheongdam",            lat: 37.5267, lng: 127.0445, src: ["BBSP","MK"],              notes: "Korean luxury multi-brand with an editorial eye. One of Seoul's most respected high-end concept stores.", addr: "Cheongdam-dong" },
+  { name: "Beaker",                  kr: "비이커",           cat: "retail",  area: "Cheongdam / Sinsa",    lat: 37.5260, lng: 127.0430, src: ["BBSP"],                   notes: "Samsung C&T's multi-brand concept store. Well-edited international mix. Multiple locations.", addr: "Multiple locations" },
+  { name: "10 Corso Como",           kr: "",                 cat: "retail",  area: "Cheongdam",            lat: 37.5278, lng: 127.0468, src: ["BBSP"],                   notes: "The Milan concept store's Seoul outpost. Fashion, design objects, books, café — the full 10CC experience.", addr: "Cheongdam-dong" },
+  { name: "DDP Market Stalls",       kr: "DDP",              cat: "market",  area: "Dongdaemun",           lat: 37.5673, lng: 127.0095, src: ["BBSP"],                   notes: "Korean designer kiosks inside Zaha Hadid's DDP complex. Middle-market, some haggling. Grounds open 24hr on weekends.", addr: "281 Eulji-ro, Jung-gu" },
+  { name: "Migliore",                kr: "밀리오레",         cat: "market",  area: "Dongdaemun",           lat: 37.5663, lng: 127.0081, src: ["BBSP"],                   notes: "Multiple floors of affordable fashion where haggling is expected. Style-to-price ratio is unmatched. Bring cash.", addr: "281 Toegye-ro, Jung-gu" },
+  { name: "Atelier Edition",         kr: "",                 cat: "retail",  area: "Apgujeong / Dosan",    lat: 37.5235, lng: 127.0345, src: ["MK"],                     notes: "Curated concept store in Dosan Park area. Part of the high-design retail cluster with Gentle Monster + Tamburins. Confirm hours via @atelieredition.dosan.", addr: "Dosan Park area" },
+  { name: "Monoha Hannam",           kr: "모노하",           cat: "retail",  area: "Hannamdong",           lat: 37.5345, lng: 126.9995, src: ["MK"],                     notes: "Named after the Mono-ha art movement. Concept store + gallery + café. Curates ceramics, clothes, home goods, books, art.", addr: "36 Dokseodang-ro, Yongsan-gu", cluster: "E" },
+  { name: "Monoha Seongsu",          kr: "모노하",           cat: "retail",  area: "Seongsu",              lat: 37.5445, lng: 127.0560, src: ["MK"],                     notes: "The Seongsu branch of Monoha. Larger space, more frequent exhibitions.", addr: "16 Seongsui-ro 20-gil", cluster: "E" },
+  { name: "Shop Amomento",           kr: "",                 cat: "retail",  area: "Anguk",                lat: 37.5770, lng: 126.9840, src: ["MK"],                     notes: "Multi-brand sister store to the Amomento label — stocks Amomento + curated like-minded labels.", addr: "Check @shopamomento_store", cluster: "A" },
+  { name: "Gentle Monster",          kr: "젠틀몬스터",       cat: "retail",  area: "Apgujeong",            lat: 37.5230, lng: 127.0340, src: ["LP","MK"],                notes: "Eyewear flagship that's also a rotating sculptural art installation. Worth visiting even if not buying. Shares Haus Dosan with Tamburins and Nudake.", addr: "Haus Dosan, Apgujeong" },
+  { name: "Tamburins",               kr: "탬버린즈",         cat: "beauty",  area: "Cheongdam",            lat: 37.5272, lng: 127.0450, src: ["BBSP","LP","MK"],          notes: "Gentle Monster's beauty arm. Perfumes, hand creams, cosmetics in gallery-store format. Café inside. Price advantage over abroad is real. Triple-sourced consensus pick.", addr: "Cheongdam flagship + Haus Dosan" },
+  { name: "Youssoful",               kr: "",                 cat: "beauty",  area: "Confirm via Instagram", lat: 37.5340, lng: 127.0000, src: ["BBSP"],                  notes: "Indie niche fragrance boutique — more boutique and less label-forward than Tamburins.", addr: "Verify via @youssoful on Instagram" },
+  { name: "Post Archive Faction",    kr: "PAF",              cat: "brand",   area: "Sindang",              lat: 37.5573, lng: 127.0180, src: ["LP"],                     notes: "Korea's most technically ambitious brand. Flagship built in the original sewing factory where PAF garments were made. Full range, genuinely cheaper than abroad.", addr: "30 Dasan-ro 20-gil, Jung-gu" },
+  { name: "Andersson Bell",          kr: "앤더슨벨",         cat: "brand",   area: "Anguk",                lat: 37.5780, lng: 126.9835, src: ["LP"],                     notes: "Contemporary Seoul fashion — tailoring meets streetwear. Flagship relocated to a converted building near Gyeongbokgung.", addr: "42 Yunboseon-gil, Jongno-gu", cluster: "A" },
+  { name: "Amomento",                kr: "아모멘토",         cat: "brand",   area: "Seochon",              lat: 37.5808, lng: 126.9680, src: ["LP","MK"],                notes: "Minimalist Korean womenswear. Emphasis on drape and proportion. Seochon flagship sits in a hanok — traditional architecture visible from the fitting room.", addr: "70 Jahamun-ro, Jongno-gu", cluster: "A" },
+  { name: "Hyein Seo",               kr: "",                 cat: "brand",   area: "Gangnam (Dosan)",      lat: 37.5215, lng: 127.0310, src: ["LP"],                     notes: "Avant-garde, youth-culture inflected. Antwerp Royal Academy training. Worn by Rihanna, Kendrick, NewJeans. Flagship + atelier in one building.", addr: "15-3 Dosan-daero 25-gil, Gangnam-gu" },
+  { name: "thisisneverthat",         kr: "디스이즈네버댓",   cat: "brand",   area: "Hongdae",              lat: 37.5550, lng: 126.9240, src: ["LP"],                     notes: "The Korean streetwear reference point. Graphic-heavy, logo-forward, accessible price point.", addr: "Hongdae flagship", cluster: "D" },
+
+  // ARTS / SIGHTS
+  { name: "Leeum Museum",            kr: "리움미술관",       cat: "museum",  area: "Hannamdong",           lat: 37.5383, lng: 126.9990, src: ["LP","MK"],                notes: "Three buildings by Mario Botta, Jean Nouvel, and Rem Koolhaas. National treasures alongside Warhol, Rothko, Hirst. One of Asia's serious art institutions.", addr: "Hannamdong", cluster: "E" },
+  { name: "MMCA Seoul",              kr: "국립현대미술관",   cat: "museum",  area: "Samcheongdong",        lat: 37.5790, lng: 126.9800, src: ["MK"],                     notes: "National Museum of Modern and Contemporary Art. Strong rotating shows on Korean and international contemporary art.", addr: "30 Samcheong-ro, Jongno-gu", cluster: "A" },
+  { name: "Gallery Hyundai",         kr: "갤러리현대",       cat: "museum",  area: "Samcheongdong",        lat: 37.5820, lng: 126.9820, src: ["LP"],                     notes: "Seoul's most established commercial gallery. Heavyweight Korean modern and contemporary names.", addr: "Samcheong-ro, Jongno-gu", cluster: "A" },
+  { name: "Arumjigi",                kr: "아름지기",         cat: "museum",  area: "Samcheongdong",        lat: 37.5825, lng: 126.9815, src: ["LP"],                     notes: "Cultural foundation dedicated to preserving Korean aesthetics. Beautiful building, rotating exhibitions on traditional craft and design. Connected to Onjium.", addr: "Samcheongdong, Jongno-gu", cluster: "A" },
+  { name: "APMA (Amorepacific)",     kr: "아모레퍼시픽미술관", cat: "museum", area: "Yongsan",             lat: 37.5295, lng: 126.9650, src: ["LP"],                     notes: "Amorepacific Museum of Art in David Chipperfield's HQ building. Strong shows, beautiful concrete-and-light architecture.", addr: "100 Hangang-daero, Yongsan-gu" },
+  { name: "Daelim Museum",           kr: "대림미술관",       cat: "museum",  area: "Tongui-dong",          lat: 37.5803, lng: 126.9722, src: ["LP"],                     notes: "Photography-focused museum in a converted hanok-adjacent space. Younger curatorial voice than the major institutions.", addr: "21 Jahamun-ro 4-gil, Jongno-gu", cluster: "A" },
+  { name: "Piknic",                  kr: "피크닉",           cat: "museum",  area: "Hoehyeon",             lat: 37.5598, lng: 126.9787, src: ["LP"],                     notes: "Multi-floor cultural space — exhibitions, café, rooftop. Strong design and music-adjacent programming.", addr: "30 Toegye-ro 6ga-gil, Jung-gu" },
+  { name: "DDP",                     kr: "동대문디자인플라자", cat: "sight",  area: "Dongdaemun",           lat: 37.5665, lng: 127.0093, src: ["BBSP"],                   notes: "Zaha Hadid's swooping aluminum landmark. Worth a walk-through even without an exhibition. Grounds open 24hr on weekends.", addr: "281 Eulji-ro, Jung-gu" },
+  { name: "Gyeongbokgung Palace",    kr: "경복궁",           cat: "sight",   area: "Jongno",               lat: 37.5796, lng: 126.9770, src: ["NW"],                     notes: "The main Joseon dynasty palace. Free hanbok rental nearby gets you free palace entry. Changing of the guard at 10am and 2pm. Closed Tuesdays.", addr: "161 Sajik-ro, Jongno-gu", cluster: "A" },
+  { name: "Gwangjang Market",        kr: "광장시장",         cat: "market",  area: "Jongno",               lat: 37.5703, lng: 127.0014, src: ["NW"],                     notes: "Iconic food market — bindaetteok (mung bean pancakes), mayak gimbap, raw beef tartare. Go hungry, eat standing.", addr: "88 Changgyeonggung-ro, Jongno-gu", cluster: "B" },
+  { name: "Namdaemun Market",        kr: "남대문시장",       cat: "market",  area: "Jung-gu",              lat: 37.5598, lng: 126.9774, src: ["NW"],                     notes: "600-year-old market. Galchi (hairtail) alley is the food highlight. Mostly daytime, but parts run late.", addr: "21 Namdaemunsijang 4-gil, Jung-gu", cluster: "B" },
+  { name: "COEX / Starfield Library",kr: "스타필드 도서관",  cat: "sight",   area: "Gangnam",              lat: 37.5121, lng: 127.0590, src: ["NW"],                     notes: "Massive underground mall + the photogenic Starfield Library (free). NW's pick for a rainy day in Gangnam.", addr: "513 Yeongdong-daero, Gangnam-gu", cluster: "C" },
+  { name: "Seoul Forest Park",       kr: "서울숲",           cat: "sight",   area: "Seongsu",              lat: 37.5443, lng: 127.0419, src: ["NW"],                     notes: "Large urban park between Seongsu and the Han River. Good break in a Seongsu/Hannamdong day. Deer enclosure if you want it.", addr: "273 Ttukseom-ro, Seongdong-gu", cluster: "E" },
+  { name: "National Museum of Korea",kr: "국립중앙박물관",   cat: "museum",  area: "Yongsan",              lat: 37.5240, lng: 126.9803, src: ["NW"],                     notes: "The country's largest museum. Free permanent collection — Korean history from prehistory to modern. NW's pick for a rainy day.", addr: "137 Seobinggo-ro, Yongsan-gu" },
+  { name: "N Seoul Tower",           kr: "남산타워",         cat: "sight",   area: "Namsan",               lat: 37.5512, lng: 126.9882, src: ["NW","LP"],                notes: "Iconic at sunset. Cable car or hike up Namsan. Pairs naturally with the Myeongdong/Namdaemun cluster.", addr: "105 Namsangongwon-gil, Yongsan-gu", cluster: "B" },
+  { name: "Bukchon Hanok Village",   kr: "북촌한옥마을",     cat: "sight",   area: "Bukchon",              lat: 37.5825, lng: 126.9850, src: ["LP","NW"],                notes: "Living neighborhood of preserved hanok between two palaces. Walk early morning before the tour groups arrive.", addr: "37 Gyedong-gil, Jongno-gu", cluster: "A" },
+  { name: "DMZ",                     kr: "DMZ",              cat: "daytrip", area: "North of Seoul",       lat: 37.9510, lng: 126.6770, src: ["LP"],                     notes: "Day tour to the demilitarized zone — Imjingak, Third Tunnel, Dora Observatory. Most tours from Seoul are 6–8 hours. Book in advance, bring passport.", addr: "Tour pickup from central Seoul" },
+  { name: "Lotte World",             kr: "롯데월드",         cat: "daytrip", area: "Jamsil",               lat: 37.5113, lng: 127.0982, src: ["LP","NW"],                notes: "Indoor amusement park (open year-round) + outdoor Magic Island. K-drama filming location for decades. Adjacent Lotte World Tower has a glass-floor observatory.", addr: "240 Olympic-ro, Songpa-gu" }
+];
+
+let activeCats    = new Set();
+let activeSrcs    = new Set();
+let activeCluster = null;
+
+const map = L.map('map', { zoomControl: true, scrollWheelZoom: true }).setView([37.5505, 126.9920], 12);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 19
+}).addTo(map);
+
+const markerLayer = L.layerGroup().addTo(map);
+const markers = new Map();
+
+function buildMarker(spot) {
+  const color     = CAT[spot.cat].color;
+  const consensus = spot.src.length >= 3;
+  const label     = spot.src.length > 1 ? spot.src.length : '';
+  const size      = consensus ? 26 : 22;
+  const html = `<div class="pin-marker${consensus ? ' consensus' : ''}" style="background:${color}">${label}</div>`;
+  const icon = L.divIcon({
+    html,
+    className: '',
+    iconSize:   [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+  const m = L.marker([spot.lat, spot.lng], { icon, title: spot.name });
+  m.bindPopup(popupHtml(spot), { maxWidth: 300, minWidth: 260 });
+  m.on('click', () => highlightCard(spot.name));
+  return m;
+}
+
+function popupHtml(s) {
+  const cat      = CAT[s.cat];
+  const srcBadges = s.src.map(x => `<span class="src-badge s-${x}">${x}</span>`).join('');
+  const rank     = s.rank    ? `<div class="popup-rank">${s.rank}</div>` : '';
+  const krSpan   = s.kr      ? `<span class="kr">${s.kr}</span>` : '';
+  const insider  = s.insider ? `<div class="popup-insider"><strong>Insider</strong>${s.insider}</div>` : '';
+  const naverQ   = encodeURIComponent(`${s.name} ${s.kr || ''} Seoul`);
+  const addr     = s.addr    ? `<div class="popup-addr">${s.addr}<br><a href="https://map.naver.com/v5/search/${naverQ}" target="_blank">Open in Naver Map →</a></div>` : '';
+  return `
+    <div class="popup-title">${s.name}${krSpan}</div>
+    ${rank}
+    <div class="popup-meta"><span class="dot" style="background:${cat.color}"></span>${cat.label} · ${s.area}</div>
+    <div class="popup-notes">${s.notes}</div>
+    ${insider}
+    <div class="popup-sources">${srcBadges}</div>
+    ${addr}
+  `;
+}
+
+function cardHtml(s) {
+  const cat      = CAT[s.cat];
+  const srcBadges = s.src.map(x => `<span class="src-badge s-${x}">${x}</span>`).join('');
+  const rank     = s.rank ? `<span class="card-rank">${s.rank}</span>` : '';
+  return `
+    <div class="card-top">
+      <span class="card-pin" style="background:${cat.color}"></span>
+      <span class="card-name">${s.name}</span>
+      ${rank}
+    </div>
+    <div class="card-meta">
+      <span class="card-cat">${cat.label}</span>
+      <span>·</span>
+      <span>${s.area}</span>
+      <span class="card-sources">${srcBadges}</div>
+    </div>
+  `;
+}
+
+function passesFilter(s) {
+  if (activeCats.size    && !activeCats.has(s.cat))               return false;
+  if (activeSrcs.size    && !s.src.some(x => activeSrcs.has(x))) return false;
+  if (activeCluster      && s.cluster !== activeCluster)          return false;
+  return true;
+}
+
+function render() {
+  markerLayer.clearLayers();
+  markers.clear();
+
+  const visible = spots.filter(passesFilter);
+
+  visible.forEach(s => {
+    const m = buildMarker(s);
+    markerLayer.addLayer(m);
+    markers.set(s.name, { marker: m, spot: s });
+  });
+
+  const cardsEl = document.getElementById('cards');
+  if (visible.length === 0) {
+    cardsEl.innerHTML = '<div class="empty-state">No spots match the current filters. Try reset.</div>';
+  } else {
+    const sorted = visible.slice().sort((a, b) => {
+      if (b.src.length !== a.src.length) return b.src.length - a.src.length;
+      return a.name.localeCompare(b.name);
+    });
+    cardsEl.innerHTML = sorted.map(s =>
+      `<div class="card" data-name="${s.name.replace(/"/g, '&quot;')}">${cardHtml(s)}</div>`
+    ).join('');
+    cardsEl.querySelectorAll('.card').forEach(c => {
+      c.addEventListener('click', () => {
+        const name  = c.dataset.name;
+        const entry = markers.get(name);
+        if (entry) {
+          map.flyTo([entry.spot.lat, entry.spot.lng], 16, { duration: 0.7 });
+          entry.marker.openPopup();
+          highlightCard(name);
+        }
+      });
+    });
+  }
+
+  document.getElementById('visible-count').textContent = visible.length + ' visible';
+  document.getElementById('spot-count').textContent    = spots.length;
+}
+
+function highlightCard(name) {
+  document.querySelectorAll('.card').forEach(c =>
+    c.classList.toggle('highlighted', c.dataset.name === name)
+  );
+  const el = document.querySelector(`.card[data-name="${CSS.escape(name)}"]`);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function buildFilters() {
+  // Category chips
+  const catRow = document.getElementById('cat-filters');
+  Object.entries(CAT).forEach(([key, c]) => {
+    const chip = document.createElement('span');
+    chip.className = `chip cat-${key}`;
+    chip.dataset.cat = key;
+    chip.innerHTML = `<span class="dot"></span>${c.label}`;
+    chip.addEventListener('click', () => {
+      activeCats.has(key) ? activeCats.delete(key) : activeCats.add(key);
+      chip.classList.toggle('active');
+      render();
+    });
+    catRow.appendChild(chip);
+  });
+
+  // Source chips
+  const srcRow = document.getElementById('src-filters');
+  Object.entries(SOURCES).forEach(([key, name]) => {
+    const chip = document.createElement('span');
+    chip.className = `chip src-${key}`;
+    chip.dataset.src = key;
+    chip.innerHTML = `${key} <span style="opacity:0.6;font-size:11px;margin-left:2px">${name}</span>`;
+    chip.addEventListener('click', () => {
+      activeSrcs.has(key) ? activeSrcs.delete(key) : activeSrcs.add(key);
+      chip.classList.toggle('src-active');
+      render();
+    });
+    srcRow.appendChild(chip);
+  });
+
+  // Day plan / cluster chips
+  const cRow = document.getElementById('cluster-filters');
+  Object.entries(CLUSTERS).forEach(([key, c]) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip cluster';
+    chip.dataset.cluster = key;
+    chip.textContent = `${key} — ${c.name.split(' — ')[0]}`;
+    chip.addEventListener('click', () => {
+      const wasActive = activeCluster === key;
+      document.querySelectorAll('.chip.cluster').forEach(x => x.classList.remove('active'));
+      if (wasActive) {
+        activeCluster = null;
+        document.getElementById('cluster-banner').classList.remove('active');
+      } else {
+        activeCluster = key;
+        chip.classList.add('active');
+        const banner = document.getElementById('cluster-banner');
+        banner.classList.add('active');
+        document.getElementById('cluster-name').textContent  = `${key} — ${c.name}`;
+        document.getElementById('cluster-order').textContent = c.order;
+        const clusterSpots = spots.filter(s => s.cluster === key);
+        if (clusterSpots.length > 0) {
+          const bounds = L.latLngBounds(clusterSpots.map(s => [s.lat, s.lng]));
+          map.flyToBounds(bounds, { padding: [40, 40], duration: 0.8 });
+        }
+      }
+      render();
+    });
+    cRow.appendChild(chip);
+  });
+
+  // Reset
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    activeCats.clear();
+    activeSrcs.clear();
+    activeCluster = null;
+    document.querySelectorAll('.chip').forEach(c => {
+      c.classList.remove('active', 'src-active');
+    });
+    document.getElementById('cluster-banner').classList.remove('active');
+    map.flyTo([37.5505, 126.9920], 12, { duration: 0.6 });
+    render();
+  });
+}
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
