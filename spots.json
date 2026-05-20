@@ -34,8 +34,8 @@
     "area": "Sinsa",
     "notes": "Famous fried chicken on Garosu-gil. Bone-in + whole green peppers — grassy heat cuts the oil. Opens 5pm.",
     "addr": "549-9 Sinsa-dong, Gangnam-gu",
-    "lat": 37.5215,
-    "lng": 126.9912,
+    "lat": 37.52232,
+    "lng": 127.0277,
     "src": [
       "BBSP"
     ]
@@ -48,8 +48,8 @@
     "notes": "Neighbourhood gem with a warm owner. Fried chicken + tteokbokki. Still by Hand clothes shop downstairs.",
     "addr": "238-1 Donggyo-ro, Mapo-gu",
     "cluster": "D",
-    "lat": 37.56145,
-    "lng": 126.9248,
+    "lat": 37.55175,
+    "lng": 126.90393,
     "src": [
       "BBSP"
     ]
@@ -159,8 +159,8 @@
     "notes": "NW went for galbi — grandmothers eating during the day is the quality signal. Less premium than Woojinga but phenomenal. Galbi is the order.",
     "addr": "369-10 Seogyo-dong, Mapo-gu",
     "cluster": "D",
-    "lat": 37.5535,
-    "lng": 126.921,
+    "lat": 37.55507,
+    "lng": 126.92382,
     "src": [
       "NW"
     ]
@@ -271,8 +271,8 @@
     "notes": "Craft makgeolli bar + dinner spot. Part of the broader makgeolli revival. Listed in the Michelin Guide. Near Noksapyeong Station Exit 2.",
     "addr": "3 Hoenamu-ro, 1F Areumnuri Building, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.53856,
-    "lng": 126.98731,
+    "lat": 37.53857,
+    "lng": 126.98762,
     "src": [
       "BBSP",
       "EB"
@@ -327,8 +327,8 @@
     "notes": "Surf/skate-aesthetic cocktail bar. Casual, late, music-forward. 2nd floor — accessed via elevator in an indoor mall hallway.",
     "addr": "72 Daesagwan-ro, 2F, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.53357,
-    "lng": 127.00238,
+    "lat": 37.53329,
+    "lng": 127.00562,
     "src": [
       "LP"
     ]
@@ -341,8 +341,8 @@
     "notes": "HBC institution — diner-style late-night spot. Burgers, drinks, decent crowd.",
     "addr": "33/44-8 Sinheung-ro, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.54474,
-    "lng": 126.98352,
+    "lat": 37.54479,
+    "lng": 126.98238,
     "src": [
       "LP"
     ]
@@ -351,12 +351,12 @@
     "name": "Komfy",
     "kr": "",
     "cat": "bar",
-    "area": "Seongsu",
-    "notes": "Sofas, low-key music, no pressure to move on. The name promises the experience.",
-    "addr": "Seongsu-dong",
-    "cluster": "E",
-    "lat": 37.5442,
-    "lng": 127.056,
+    "area": "Hapjeong",
+    "notes": "Sofas, low-key music, no pressure to move on. Vinyl/hi-fi bar in the Hongdae/Hapjeong area — actually NOT in Seongsu as previously listed.",
+    "addr": "32 Yanghwa-ro 6-gil, Mapo-gu",
+    "cluster": "D",
+    "lat": 37.54887,
+    "lng": 126.91597,
     "src": [
       "LP"
     ]
@@ -390,13 +390,13 @@
   },
   {
     "name": "Orgasm Valley",
-    "kr": "",
+    "kr": "계곡",
     "cat": "bar",
-    "area": "Sinsa",
-    "notes": "Hip-hop lounge. Late, loud, dancing.",
-    "addr": "655 Sinsa-dong, Gangnam-gu",
-    "lat": 37.52,
-    "lng": 127.022,
+    "area": "Apgujeong (Rodeo)",
+    "notes": "Full name 'Gyegog - Orgasm Valley' (계곡 = 'valley' in Korean). Hip-hop lounge — late, loud, dancing. Opens 4pm weekdays, til 5am Fri/Sat.",
+    "addr": "15 Seolleung-ro 155-gil, B1, Gangnam-gu",
+    "lat": 37.5254,
+    "lng": 127.03837,
     "src": [
       "LP"
     ]
@@ -443,8 +443,8 @@
     "addr": "B1, 33 Seolleung-ro 157-gil, Gangnam-gu",
     "insider": "AK: 'One of my two favorite bars in the world.'",
     "cluster": "F",
-    "lat": 37.52634,
-    "lng": 127.03706,
+    "lat": 37.52628,
+    "lng": 127.03709,
     "src": [
       "AK"
     ]
@@ -473,8 +473,8 @@
     "notes": "Set in a traditional hanok. Korean spirits-first: soju, makgeolli, provincial spirits used in inventive cocktails. Menu changes seasonally. Owner BJ Lim. Small — book ahead or wait at sister bar Pomme nearby.",
     "addr": "34 Jahamun-ro 7-gil, Tongin-dong, Jongno-gu",
     "cluster": "A",
-    "lat": 37.57922,
-    "lng": 126.97017,
+    "lat": 37.58033,
+    "lng": 126.96909,
     "src": [
       "MK"
     ]
@@ -501,8 +501,8 @@
     "notes": "Seoul's most internationally known club. Underground, no-frills room; serious DJ bookings (techno, house, experimental). Arrive after 1am. Passport required. Basement next to Tussa skateshop near Noksapyeong Station.",
     "addr": "134 Itaewon-ro, B1, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.53977,
-    "lng": 127.00238,
+    "lat": 37.5347,
+    "lng": 126.99339,
     "src": [
       "LP"
     ]
@@ -515,8 +515,8 @@
     "notes": "Two interconnected rooms — Hills (house/techno) + Europa (experimental). Bigger and slightly less scene-at-the-door than Cakeshop.",
     "addr": "35 Sinheung-ro, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.54431,
-    "lng": 126.98237,
+    "lat": 37.54465,
+    "lng": 126.98447,
     "src": [
       "LP"
     ]
@@ -667,8 +667,8 @@
     "area": "Dongdaemun",
     "notes": "Multiple floors of affordable fashion where haggling is expected. Style-to-price ratio is unmatched. Bring cash.",
     "addr": "281 Toegye-ro, Jung-gu",
-    "lat": 37.56384,
-    "lng": 127.00541,
+    "lat": 37.56427,
+    "lng": 127.00539,
     "src": [
       "BBSP"
     ]
@@ -806,8 +806,8 @@
     "notes": "Minimalist Korean womenswear. Emphasis on drape and proportion. Seochon flagship sits in a hanok — traditional architecture visible from the fitting room.",
     "addr": "70 Jahamun-ro, Jongno-gu",
     "cluster": "A",
-    "lat": 37.60039,
-    "lng": 126.95952,
+    "lat": 37.59902,
+    "lng": 126.96032,
     "src": [
       "LP",
       "MK"

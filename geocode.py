@@ -34,10 +34,13 @@ def is_geocodeable(addr: str) -> bool:
         return False
     if SKIP_PATTERNS.search(addr):
         return False
-    # Must look like a street address (has a digit and a road component)
-    has_number   = bool(re.search(r'\d', addr))
-    has_road     = bool(re.search(r'-ro|-gil|-ga|-daero|-ro\b|Namsangongwon', addr, re.I))
-    return has_number and has_road
+    # Must have a number (street/lot number)
+    if not re.search(r'\d', addr):
+        return False
+    # And some Korean address component (road or dong)
+    has_road = bool(re.search(r'-ro\b|-gil\b|-ga\b|-daero\b|Namsangongwon', addr, re.I))
+    has_dong = bool(re.search(r'-dong\b', addr, re.I))
+    return has_road or has_dong
 
 def clean_for_geocoding(addr: str) -> str:
     addr = re.sub(r'\s*\([^)]*\)', '', addr)                      # remove (anything)
