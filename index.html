@@ -532,7 +532,7 @@ const spots = [
   // CLUBS
   { name: "Cakeshop",                kr: "",                 cat: "club",    area: "Itaewon",              lat: 37.5345, lng: 126.9942, src: ["LP"],                     notes: "Seoul's most internationally known club. Underground, no-frills room; serious DJ bookings (techno, house, experimental). Arrive after 1am. Passport required.", addr: "Itaewon", cluster: "E" },
   { name: "Hills & Europa",          kr: "",                 cat: "club",    area: "Haebangchon",          lat: 37.5408, lng: 126.9875, src: ["LP"],                     notes: "Two interconnected rooms — Hills (house/techno) + Europa (experimental). Bigger and slightly less scene-at-the-door than Cakeshop.", addr: "35 Sinheung-ro, Yongsan-gu", cluster: "E" },
-  { name: "Kockiri",                 kr: "코끼리",           cat: "club",    area: "Itaewon",              lat: 37.5346, lng: 126.9938, src: ["LP"],                     notes: "Active again per their Instagram. Hip-hop and R&B-leaning. Verify hours before going.", addr: "Itaewon", cluster: "E" },
+  { name: "Kockiri",                 kr: "코끼리",           cat: "club",    area: "Haebangchon",          lat: 37.5427, lng: 126.9872, src: ["LP"],                     notes: "Active again per their Instagram. Hip-hop and R&B-leaning. Verify hours before going.", addr: "46 Usadan-ro, Yongsan-gu, 4th floor", cluster: "E" },
   { name: "Henz Club",               kr: "",                 cat: "club",    area: "Hongdae",              lat: 37.5475, lng: 126.9230, src: ["LP"],                     notes: "One of Seoul's most established clubs. Hip-hop/trap nights alongside electronic.", addr: "Sangsu-dong, adjacent Hongdae", cluster: "D" },
 
   // FINE DINING
@@ -587,8 +587,9 @@ let activeCluster = null;
 
 const map = L.map('map', { zoomControl: true, scrollWheelZoom: true }).setView([37.5505, 126.9920], 12);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
   maxZoom: 19
 }).addTo(map);
 
