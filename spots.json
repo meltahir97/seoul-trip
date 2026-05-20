@@ -1,0 +1,1093 @@
+[
+  {
+    "name": "Myeongdong Kyoja",
+    "kr": "명동교자",
+    "cat": "food",
+    "area": "Myeongdong",
+    "notes": "Knife-cut noodles (kalguksu) since 1966. Order kalguksu + mandu. Cash preferred, closed Sundays.",
+    "addr": "14 Myeongdong 10-gil, Jung-gu",
+    "cluster": "B",
+    "lat": 37.56335,
+    "lng": 126.98557,
+    "src": [
+      "BBSP",
+      "NW"
+    ]
+  },
+  {
+    "name": "Woo Lae Oak",
+    "kr": "우래옥",
+    "cat": "food",
+    "area": "Euljiro",
+    "notes": "Since 1946. Order the naengmyeon (cold buckwheat noodles) — this is the move, not the BBQ. Reservations recommended.",
+    "addr": "Euljiro 4-ga",
+    "lat": 37.56573,
+    "lng": 126.99734,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Hanchu",
+    "kr": "한추",
+    "cat": "food",
+    "area": "Sinsa",
+    "notes": "Famous fried chicken on Garosu-gil. Bone-in + whole green peppers — grassy heat cuts the oil. Opens 5pm.",
+    "addr": "549-9 Sinsa-dong, Gangnam-gu",
+    "lat": 37.5215,
+    "lng": 126.9912,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Chicken Rock",
+    "kr": "치킨락",
+    "cat": "food",
+    "area": "Yeonnam",
+    "notes": "Neighbourhood gem with a warm owner. Fried chicken + tteokbokki. Still by Hand clothes shop downstairs.",
+    "addr": "238-1 Donggyo-ro, Mapo-gu",
+    "cluster": "D",
+    "lat": 37.56145,
+    "lng": 126.9248,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Mangwon Market",
+    "kr": "망원시장",
+    "cat": "market",
+    "area": "Mangwon",
+    "notes": "Local traditional market — non-touristy alternative to Gwangjang. Banchan, tteokbokki, produce. Cash preferred.",
+    "addr": "14 Mangwon-ro, Mapo-gu",
+    "cluster": "D",
+    "lat": 37.55737,
+    "lng": 126.90502,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Nari's House",
+    "kr": "나리의집",
+    "cat": "kbbq",
+    "area": "Hangangjin",
+    "notes": "Est. 1985. Naengsam (frozen samgyeopsal) — ultra-thin frozen pork belly, a 40-year institution. Expect a queue. Open 2pm–midnight, every other Sun closed.",
+    "addr": "Near Hangangjin Station",
+    "cluster": "E",
+    "lat": 37.5395,
+    "lng": 126.9999,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Che Budong Sujebi",
+    "kr": "체부동잔치집",
+    "cat": "food",
+    "area": "Seochon",
+    "notes": "Listed locally as 체부동잔치집 (Chebudong Janchijip) — famous for deulkkae sujebi (perilla-seed sujebi). Hand-torn noodle soup in rich anchovy broth.",
+    "addr": "16 Jahamun-ro 1-gil, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57652,
+    "lng": 126.97042,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Sigol Yachae Doenjjang",
+    "kr": "시골야채된장",
+    "cat": "food",
+    "area": "Gangnam Station",
+    "notes": "NW's friend has loved this for doenjang jjigae. Humble local spot, the kind tourists never find.",
+    "addr": "11 Gangnam-daero 69-gil, 1F Sammi Bldg, Seocho-gu",
+    "cluster": "C",
+    "lat": 37.50145,
+    "lng": 127.02424,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Woojinga",
+    "kr": "우진가",
+    "cat": "kbbq",
+    "area": "Yeoksam",
+    "notes": "NW went here personally — premium 1++ hanwoo beef. Marbled like A5 wagyu but meatier. Comparable to NYC's Cote at lower price. Book via CatchTable.",
+    "addr": "28 Teheran-ro 27-gil, Gangnam-gu (우진가 더 챔버스 역삼점)",
+    "cluster": "C",
+    "lat": 37.50328,
+    "lng": 127.03743,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Howang",
+    "kr": "호왕",
+    "cat": "kbbq",
+    "area": "Bangbae",
+    "notes": "Same tier as Woojinga per NW's Gangnam-local friend. All-hanwoo, high quality. Reservations needed. Actually in Bangbae (Seocho-gu), not Cheongdam — confirm via Siksin before booking.",
+    "addr": "91 Seocho-daero, 1F, Seocho-gu",
+    "lat": 37.47067,
+    "lng": 127.04353,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Hanwadam Black",
+    "kr": "한와담 블랙",
+    "cat": "kbbq",
+    "area": "Hannamdong",
+    "notes": "Premium aged-hanwoo sub-brand of Hanwadam. Both branches within 50m. Typically packed — reserve.",
+    "addr": "65-1 Dokseodang-ro area, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.53648,
+    "lng": 127.0118,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Gaggangsullae",
+    "kr": "강강술래",
+    "cat": "kbbq",
+    "area": "Hongdae",
+    "notes": "NW went for galbi — grandmothers eating during the day is the quality signal. Less premium than Woojinga but phenomenal. Galbi is the order.",
+    "addr": "369-10 Seogyo-dong, Mapo-gu",
+    "cluster": "D",
+    "lat": 37.5535,
+    "lng": 126.921,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Obaltan",
+    "kr": "오발탄",
+    "cat": "kbbq",
+    "area": "Yeoksam",
+    "notes": "Gopchang, makchang, daechang — offal KBBQ. Charred, funky, chewy. Completely different from beef/pork belly. Yeoksam flagship.",
+    "addr": "12 Nonhyeon-ro 86-gil, Gangnam-gu",
+    "cluster": "C",
+    "lat": 37.49963,
+    "lng": 127.03838,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Balwoo Gongyang",
+    "kr": "발우공양",
+    "cat": "fine",
+    "area": "Anguk",
+    "rank": "Michelin ★ (2017–19)",
+    "notes": "The only temple food restaurant in Korea run by the Jogye Order. Plant-based (no garlic/onion/leek). Private rooms, intentional silence. Courses ₩30k–₩90k. Closed Sundays. Book a month ahead.",
+    "addr": "56 Ujeongguk-ro, Jongno-gu (5F Templestay Center)",
+    "cluster": "A",
+    "lat": 37.57382,
+    "lng": 126.98317,
+    "src": [
+      "EB"
+    ]
+  },
+  {
+    "name": "Anthracite Coffee",
+    "kr": "앤트러사이트",
+    "cat": "cafe",
+    "area": "Hapjeong",
+    "notes": "Seoul's most architecturally ambitious coffee brand. Former industrial spaces converted with serious design intent. Hongdae branch overlooks a sculptural garden.",
+    "addr": "Hongdae/Hapjeong main branch + others",
+    "cluster": "D",
+    "lat": 37.5497,
+    "lng": 126.9143,
+    "src": [
+      "BBSP",
+      "MK"
+    ]
+  },
+  {
+    "name": "Archivist Café",
+    "kr": "",
+    "cat": "cafe",
+    "area": "Seochon",
+    "notes": "Known for Einspänner (Vienna-style coffee with thick whipped cream). Dark green walls, small space — go early.",
+    "addr": "52 Hyoja-ro 13-gil, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.58312,
+    "lng": 126.97242,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Cheongsudang",
+    "kr": "청수당",
+    "cat": "cafe",
+    "area": "Ikseon-dong",
+    "notes": "One of Seoul's most photogenic cafés — hanok conversion with bamboo entrance, stone path over a stream, soufflé cakes.",
+    "addr": "Ikseon-dong hanok district",
+    "lat": 37.571,
+    "lng": 126.989,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Nudake",
+    "kr": "누데이크",
+    "cat": "cafe",
+    "area": "Apgujeong",
+    "notes": "Conceptual café directly below the Gentle Monster flagship. Sculptural pastries (the 'Peak' croissant is the photo). Shares a building with Tamburins.",
+    "addr": "Haus Dosan, Apgujeong",
+    "lat": 37.523,
+    "lng": 127.034,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Cafe Onion",
+    "kr": "어니언",
+    "cat": "cafe",
+    "area": "Anguk",
+    "notes": "Bakery-café in a restored hanok near Bukchon. The pandoro covered in powdered sugar is the order. Original branch is in Seongsu in a former metal factory.",
+    "addr": "5 Gye-dong-gil, Jongno-gu (Anguk) + Seongsu original",
+    "cluster": "A",
+    "lat": 37.579,
+    "lng": 126.985,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Mr. Ahn's Makgeolli",
+    "kr": "안씨막걸리",
+    "cat": "bar",
+    "area": "Itaewon (Noksapyeong)",
+    "notes": "Craft makgeolli bar + dinner spot. Part of the broader makgeolli revival. Listed in the Michelin Guide. Near Noksapyeong Station Exit 2.",
+    "addr": "3 Hoenamu-ro, 1F Areumnuri Building, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.53856,
+    "lng": 126.98731,
+    "src": [
+      "BBSP",
+      "EB"
+    ]
+  },
+  {
+    "name": "Ace Four Club",
+    "kr": "에이스포클럽",
+    "cat": "bar",
+    "area": "Euljiro",
+    "notes": "Serious craft cocktail bar with window seats overlooking Eulji-ro. Part of the Euljiro creative revival.",
+    "addr": "105 Eulji-ro, Jung-gu",
+    "lat": 37.56644,
+    "lng": 126.98955,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Gong Gan",
+    "kr": "공간",
+    "cat": "bar",
+    "area": "Anguk",
+    "rank": "#89 Asia",
+    "notes": "Cocktail bar in a hanok with a glass inner courtyard. The room is the point as much as the drinks.",
+    "addr": "Near Anguk Station, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.5763,
+    "lng": 126.9852,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Kompakt Record Bar",
+    "kr": "콤팩트 레코드 바",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "notes": "Vinyl-focused bar run by Jinmoo of 360 Sounds DJ crew. NO connection to the Cologne label. This is Ver.1 (the original, 2018) on the Apgujeong/Sinsa border. Ver.2 is also Sinsa-dong; Ver.3 opened in Seongsu (81 Yeonmujang-gil).",
+    "addr": "2F, 21 Nonhyeon-ro 155-gil, Gangnam-gu (Ver.1)",
+    "lat": 37.52145,
+    "lng": 127.02587,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Stoked & Stoned",
+    "kr": "",
+    "cat": "bar",
+    "area": "Hannamdong",
+    "notes": "Surf/skate-aesthetic cocktail bar. Casual, late, music-forward. 2nd floor — accessed via elevator in an indoor mall hallway.",
+    "addr": "72 Daesagwan-ro, 2F, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.53357,
+    "lng": 127.00238,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Wild Duck Canteen",
+    "kr": "",
+    "cat": "bar",
+    "area": "Haebangchon",
+    "notes": "HBC institution — diner-style late-night spot. Burgers, drinks, decent crowd.",
+    "addr": "33/44-8 Sinheung-ro, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.54474,
+    "lng": 126.98352,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Komfy",
+    "kr": "",
+    "cat": "bar",
+    "area": "Seongsu",
+    "notes": "Sofas, low-key music, no pressure to move on. The name promises the experience.",
+    "addr": "Seongsu-dong",
+    "cluster": "E",
+    "lat": 37.5442,
+    "lng": 127.056,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Vita",
+    "kr": "",
+    "cat": "bar",
+    "area": "Unverified",
+    "notes": "Natural wine bar from LP's recs. Could not be independently verified by name alone — possibly Instagram-only or recently opened. Ask LP for the Instagram handle / Naver listing before going.",
+    "addr": "Unverified — pin placed approximately in Itaewon",
+    "lat": 37.534,
+    "lng": 126.994,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Times",
+    "kr": "",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "notes": "Cocktail-forward late bar in the Apgujeong/Sinsa speakeasy district.",
+    "addr": "25 Apgujeong-ro 54-gil, Gangnam-gu",
+    "cluster": "F",
+    "lat": 37.52623,
+    "lng": 127.03936,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Orgasm Valley",
+    "kr": "",
+    "cat": "bar",
+    "area": "Sinsa",
+    "notes": "Hip-hop lounge. Late, loud, dancing.",
+    "addr": "655 Sinsa-dong, Gangnam-gu",
+    "lat": 37.52,
+    "lng": 127.022,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Zest",
+    "kr": "",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "rank": "#2 Asia · #16 World",
+    "notes": "The single most-recommended place in this guide — four independent sources. Zero-waste philosophy: house-distilled gin from Korean botanicals, own-made sodas, city honey from Seoul beehives.",
+    "addr": "B1, 26 Dosan-daero 55-gil, Gangnam-gu",
+    "insider": "Ask for Noah (co-owner). Mention Alexander Kim — he's Bobby Min's cousin. Reservations essential.",
+    "cluster": "F",
+    "lat": 37.52515,
+    "lng": 127.04062,
+    "src": [
+      "LP",
+      "AK",
+      "MK",
+      "EB"
+    ]
+  },
+  {
+    "name": "VIBD BLVD",
+    "kr": "",
+    "cat": "bar",
+    "area": "Yongridan-gil",
+    "notes": "Vinyl sanctuary — walls of LPs, DJ booth at the bar. 4-person table limit. Write song requests on paper. VIBD Signature (cranberry) is the house cocktail. Doors 8:30pm.",
+    "addr": "2F, 164 Hangang-daero, Yongsan-gu (near Samgakji Station L6)",
+    "lat": 37.534,
+    "lng": 126.972,
+    "src": [
+      "EB"
+    ]
+  },
+  {
+    "name": "Pine & Co",
+    "kr": "파인앤코",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "rank": "#50 Asia",
+    "notes": "Hidden Apgujeong alley — find the entrance, press a button, descend. Service bar like a sci-fi R&D lab; room is warm leather and candles. House-distilled gin. Closed Mondays.",
+    "addr": "B1, 33 Seolleung-ro 157-gil, Gangnam-gu",
+    "insider": "AK: 'One of my two favorite bars in the world.'",
+    "cluster": "F",
+    "lat": 37.52634,
+    "lng": 127.03706,
+    "src": [
+      "AK"
+    ]
+  },
+  {
+    "name": "Le Chamber",
+    "kr": "르챔버",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "notes": "Speakeasy behind a bookshelf — pull the correct book. 50-seat room: high ceilings, chandeliers, live piano. 200+ whiskies. Founded by world-champ bartenders. Cover charge.",
+    "addr": "B1, 42 Dosan-daero 55-gil, Gangnam-gu",
+    "insider": "AK: 'Finding it is a lot of fun.'",
+    "cluster": "F",
+    "lat": 37.52515,
+    "lng": 127.04062,
+    "src": [
+      "AK"
+    ]
+  },
+  {
+    "name": "Bar Cham",
+    "kr": "바 참",
+    "cat": "bar",
+    "area": "Seochon",
+    "rank": "#6 Asia",
+    "notes": "Set in a traditional hanok. Korean spirits-first: soju, makgeolli, provincial spirits used in inventive cocktails. Menu changes seasonally. Owner BJ Lim. Small — book ahead or wait at sister bar Pomme nearby.",
+    "addr": "34 Jahamun-ro 7-gil, Tongin-dong, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57922,
+    "lng": 126.97017,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Courte",
+    "kr": "",
+    "cat": "bar",
+    "area": "Apgujeong",
+    "notes": "Operates as café (Courte Cafe) + bar (Courte Sidebar). Thu–Sat only, noon to late. RSVP by DM. Part of the Apgujeong crawl cluster.",
+    "addr": "B1, 13 Dosan-daero 51-gil, Gangnam-gu",
+    "cluster": "F",
+    "lat": 37.52389,
+    "lng": 127.03784,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Cakeshop",
+    "kr": "",
+    "cat": "club",
+    "area": "Itaewon",
+    "notes": "Seoul's most internationally known club. Underground, no-frills room; serious DJ bookings (techno, house, experimental). Arrive after 1am. Passport required. Basement next to Tussa skateshop near Noksapyeong Station.",
+    "addr": "134 Itaewon-ro, B1, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.53977,
+    "lng": 127.00238,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Hills & Europa",
+    "kr": "",
+    "cat": "club",
+    "area": "Haebangchon",
+    "notes": "Two interconnected rooms — Hills (house/techno) + Europa (experimental). Bigger and slightly less scene-at-the-door than Cakeshop.",
+    "addr": "35 Sinheung-ro, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.54431,
+    "lng": 126.98237,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Kockiri",
+    "kr": "코끼리",
+    "cat": "club",
+    "area": "Haebangchon",
+    "notes": "Active again per their Instagram. Hip-hop and R&B-leaning. Verify hours before going.",
+    "addr": "46 Usadan-ro, Yongsan-gu, 4th floor",
+    "cluster": "E",
+    "lat": 37.5342,
+    "lng": 126.99579,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Henz Club",
+    "kr": "",
+    "cat": "club",
+    "area": "Hongdae",
+    "notes": "One of Seoul's most established clubs. Hip-hop/trap nights alongside electronic.",
+    "addr": "Sangsu-dong, adjacent Hongdae",
+    "cluster": "D",
+    "lat": 37.5475,
+    "lng": 126.923,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Mingles",
+    "kr": "밍글스",
+    "cat": "fine",
+    "area": "Cheongdam",
+    "rank": "Michelin ★★★",
+    "notes": "Chef Mingoo Kang's restaurant — modern Korean fine dining built on jang (fermented pastes). One of Asia's most consistently celebrated kitchens.",
+    "addr": "Cheongdam-dong",
+    "lat": 37.5267,
+    "lng": 127.0455,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Mosu",
+    "kr": "모수",
+    "cat": "fine",
+    "area": "Itaewon (Yongsan)",
+    "rank": "Michelin ★★",
+    "notes": "Chef Sung Anh's flagship — reopened March 2025 in Yongsan/Itaewon after closing the Hannam location in 2024. Korean sensibility filtered through Western fine-dining, then stripped back. Currently 2 stars (was 3 in 2023–24). Counter seating is the best seat.",
+    "addr": "4 Hoenamu-ro 41-gil, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.54167,
+    "lng": 126.9951,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Onjium",
+    "kr": "온지음",
+    "cat": "fine",
+    "area": "Samcheongdong",
+    "rank": "Michelin ★",
+    "notes": "Rooted in royal court cuisine (궁중요리), connected to Arumjigi's cultural research. The most culturally grounded tasting menu in Seoul.",
+    "addr": "Samcheongdong, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.583,
+    "lng": 126.981,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Nothing Written",
+    "kr": "",
+    "cat": "retail",
+    "area": "Hannamdong",
+    "notes": "Women's clothing store designed to feel like shopping a friend's wardrobe. Flagship is 'House & Garden Hannam.'",
+    "addr": "14-5 Hannam-daero 40-gil, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.54237,
+    "lng": 127.00321,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Boon the Shop",
+    "kr": "분더샵",
+    "cat": "retail",
+    "area": "Cheongdam",
+    "notes": "Korean luxury multi-brand with an editorial eye. One of Seoul's most respected high-end concept stores.",
+    "addr": "Cheongdam-dong",
+    "lat": 37.5267,
+    "lng": 127.0445,
+    "src": [
+      "BBSP",
+      "MK"
+    ]
+  },
+  {
+    "name": "Beaker",
+    "kr": "비이커",
+    "cat": "retail",
+    "area": "Cheongdam / Sinsa",
+    "notes": "Samsung C&T's multi-brand concept store. Well-edited international mix. Multiple locations.",
+    "addr": "Multiple locations",
+    "lat": 37.526,
+    "lng": 127.043,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "10 Corso Como",
+    "kr": "",
+    "cat": "retail",
+    "area": "Cheongdam",
+    "notes": "The Milan concept store's Seoul outpost. Fashion, design objects, books, café — the full 10CC experience.",
+    "addr": "Cheongdam-dong",
+    "lat": 37.5278,
+    "lng": 127.0468,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "DDP Market Stalls",
+    "kr": "DDP",
+    "cat": "market",
+    "area": "Dongdaemun",
+    "notes": "Korean designer kiosks inside Zaha Hadid's DDP complex. Middle-market, some haggling. Grounds open 24hr on weekends.",
+    "addr": "281 Eulji-ro, Jung-gu",
+    "lat": 37.56623,
+    "lng": 127.00916,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Migliore",
+    "kr": "밀리오레",
+    "cat": "market",
+    "area": "Dongdaemun",
+    "notes": "Multiple floors of affordable fashion where haggling is expected. Style-to-price ratio is unmatched. Bring cash.",
+    "addr": "281 Toegye-ro, Jung-gu",
+    "lat": 37.56384,
+    "lng": 127.00541,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Atelier Edition",
+    "kr": "",
+    "cat": "retail",
+    "area": "Apgujeong / Dosan",
+    "notes": "Curated concept store in Dosan Park area. Part of the high-design retail cluster with Gentle Monster + Tamburins. Confirm hours via @atelieredition.dosan.",
+    "addr": "Dosan Park area",
+    "lat": 37.5235,
+    "lng": 127.0345,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Monoha Hannam",
+    "kr": "모노하",
+    "cat": "retail",
+    "area": "Hannamdong",
+    "notes": "Named after the Mono-ha art movement. Concept store + gallery + café. Curates ceramics, clothes, home goods, books, art.",
+    "addr": "36 Dokseodang-ro, Yongsan-gu",
+    "cluster": "E",
+    "lat": 37.53765,
+    "lng": 127.01292,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Monoha Seongsu",
+    "kr": "모노하",
+    "cat": "retail",
+    "area": "Seongsu",
+    "notes": "The Seongsu branch of Monoha. Larger space, more frequent exhibitions.",
+    "addr": "16 Seongsui-ro 20-gil",
+    "cluster": "E",
+    "lat": 37.54303,
+    "lng": 127.05839,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Shop Amomento",
+    "kr": "",
+    "cat": "retail",
+    "area": "Anguk",
+    "notes": "Multi-brand sister store to the Amomento label — stocks Amomento + curated like-minded labels.",
+    "addr": "Check @shopamomento_store",
+    "cluster": "A",
+    "lat": 37.577,
+    "lng": 126.984,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Gentle Monster",
+    "kr": "젠틀몬스터",
+    "cat": "retail",
+    "area": "Apgujeong",
+    "notes": "Eyewear flagship that's also a rotating sculptural art installation. Worth visiting even if not buying. Shares Haus Dosan with Tamburins and Nudake.",
+    "addr": "Haus Dosan, Apgujeong",
+    "lat": 37.523,
+    "lng": 127.034,
+    "src": [
+      "LP",
+      "MK"
+    ]
+  },
+  {
+    "name": "Tamburins",
+    "kr": "탬버린즈",
+    "cat": "beauty",
+    "area": "Cheongdam",
+    "notes": "Gentle Monster's beauty arm. Perfumes, hand creams, cosmetics in gallery-store format. Café inside. Price advantage over abroad is real. Triple-sourced consensus pick.",
+    "addr": "Cheongdam flagship + Haus Dosan",
+    "lat": 37.5272,
+    "lng": 127.045,
+    "src": [
+      "BBSP",
+      "LP",
+      "MK"
+    ]
+  },
+  {
+    "name": "Youssoful",
+    "kr": "유쏘풀",
+    "cat": "beauty",
+    "area": "Yeonnam",
+    "notes": "Indie Korean fragrance brand ('You're so beautiful') — more boutique and less label-forward than Tamburins. Signature scent: Saint Moritz. Affordable.",
+    "addr": "28 Yeonhui-ro 1-gil, Mapo-gu (Yeonnam-dong)",
+    "cluster": "D",
+    "lat": 37.56022,
+    "lng": 126.92557,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Post Archive Faction",
+    "kr": "PAF",
+    "cat": "brand",
+    "area": "Sindang",
+    "notes": "Korea's most technically ambitious brand. Flagship built in the original sewing factory where PAF garments were made. Full range, genuinely cheaper than abroad.",
+    "addr": "30 Dasan-ro 20-gil, Jung-gu",
+    "lat": 37.55689,
+    "lng": 127.01371,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Andersson Bell",
+    "kr": "앤더슨벨",
+    "cat": "brand",
+    "area": "Anguk",
+    "notes": "Contemporary Seoul fashion — tailoring meets streetwear. Flagship relocated to a converted building near Gyeongbokgung.",
+    "addr": "42 Yunboseon-gil, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57746,
+    "lng": 126.98361,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Amomento",
+    "kr": "아모멘토",
+    "cat": "brand",
+    "area": "Seochon",
+    "notes": "Minimalist Korean womenswear. Emphasis on drape and proportion. Seochon flagship sits in a hanok — traditional architecture visible from the fitting room.",
+    "addr": "70 Jahamun-ro, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.60039,
+    "lng": 126.95952,
+    "src": [
+      "LP",
+      "MK"
+    ]
+  },
+  {
+    "name": "Hyein Seo",
+    "kr": "",
+    "cat": "brand",
+    "area": "Gangnam (Dosan)",
+    "notes": "Avant-garde, youth-culture inflected. Antwerp Royal Academy training. Worn by Rihanna, Kendrick, NewJeans. Flagship + atelier in one building.",
+    "addr": "15-3 Dosan-daero 25-gil, Gangnam-gu",
+    "lat": 37.52133,
+    "lng": 127.02683,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "thisisneverthat",
+    "kr": "디스이즈네버댓",
+    "cat": "brand",
+    "area": "Hongdae",
+    "notes": "The Korean streetwear reference point. Graphic-heavy, logo-forward, accessible price point.",
+    "addr": "Hongdae flagship",
+    "cluster": "D",
+    "lat": 37.555,
+    "lng": 126.924,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Leeum Museum",
+    "kr": "리움미술관",
+    "cat": "museum",
+    "area": "Hannamdong",
+    "notes": "Three buildings by Mario Botta, Jean Nouvel, and Rem Koolhaas. National treasures alongside Warhol, Rothko, Hirst. One of Asia's serious art institutions.",
+    "addr": "Hannamdong",
+    "cluster": "E",
+    "lat": 37.5383,
+    "lng": 126.999,
+    "src": [
+      "LP",
+      "MK"
+    ]
+  },
+  {
+    "name": "MMCA Seoul",
+    "kr": "국립현대미술관",
+    "cat": "museum",
+    "area": "Samcheongdong",
+    "notes": "National Museum of Modern and Contemporary Art. Strong rotating shows on Korean and international contemporary art.",
+    "addr": "30 Samcheong-ro, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57887,
+    "lng": 126.98068,
+    "src": [
+      "MK"
+    ]
+  },
+  {
+    "name": "Gallery Hyundai",
+    "kr": "갤러리현대",
+    "cat": "museum",
+    "area": "Samcheongdong",
+    "notes": "Seoul's most established commercial gallery. Heavyweight Korean modern and contemporary names.",
+    "addr": "Samcheong-ro, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.582,
+    "lng": 126.982,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Arumjigi",
+    "kr": "아름지기",
+    "cat": "museum",
+    "area": "Samcheongdong",
+    "notes": "Cultural foundation dedicated to preserving Korean aesthetics. Beautiful building, rotating exhibitions on traditional craft and design. Connected to Onjium.",
+    "addr": "Samcheongdong, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.5825,
+    "lng": 126.9815,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "APMA (Amorepacific)",
+    "kr": "아모레퍼시픽미술관",
+    "cat": "museum",
+    "area": "Yongsan",
+    "notes": "Amorepacific Museum of Art in David Chipperfield's HQ building. Strong shows, beautiful concrete-and-light architecture.",
+    "addr": "100 Hangang-daero, Yongsan-gu",
+    "lat": 37.52854,
+    "lng": 126.96842,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Daelim Museum",
+    "kr": "대림미술관",
+    "cat": "museum",
+    "area": "Tongui-dong",
+    "notes": "Photography-focused museum in a converted hanok-adjacent space. Younger curatorial voice than the major institutions.",
+    "addr": "21 Jahamun-ro 4-gil, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57749,
+    "lng": 126.97336,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Piknic",
+    "kr": "피크닉",
+    "cat": "museum",
+    "area": "Hoehyeon",
+    "notes": "Multi-floor cultural space — exhibitions, café, rooftop. Strong design and music-adjacent programming.",
+    "addr": "30 Toegye-ro 6ga-gil, Jung-gu",
+    "lat": 37.55669,
+    "lng": 126.9781,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "DDP",
+    "kr": "동대문디자인플라자",
+    "cat": "sight",
+    "area": "Dongdaemun",
+    "notes": "Zaha Hadid's swooping aluminum landmark. Worth a walk-through even without an exhibition. Grounds open 24hr on weekends.",
+    "addr": "281 Eulji-ro, Jung-gu",
+    "lat": 37.56623,
+    "lng": 127.00916,
+    "src": [
+      "BBSP"
+    ]
+  },
+  {
+    "name": "Gyeongbokgung Palace",
+    "kr": "경복궁",
+    "cat": "sight",
+    "area": "Jongno",
+    "notes": "The main Joseon dynasty palace. Free hanbok rental nearby gets you free palace entry. Changing of the guard at 10am and 2pm. Closed Tuesdays.",
+    "addr": "161 Sajik-ro, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57592,
+    "lng": 126.97682,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Gwangjang Market",
+    "kr": "광장시장",
+    "cat": "market",
+    "area": "Jongno",
+    "notes": "Iconic food market — bindaetteok (mung bean pancakes), mayak gimbap, raw beef tartare. Go hungry, eat standing.",
+    "addr": "88 Changgyeonggung-ro, Jongno-gu",
+    "cluster": "B",
+    "lat": 37.56993,
+    "lng": 126.99908,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Namdaemun Market",
+    "kr": "남대문시장",
+    "cat": "market",
+    "area": "Jung-gu",
+    "notes": "600-year-old market. Galchi (hairtail) alley is the food highlight. Mostly daytime, but parts run late.",
+    "addr": "21 Namdaemunsijang 4-gil, Jung-gu",
+    "cluster": "B",
+    "lat": 37.55939,
+    "lng": 126.97796,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "COEX / Starfield Library",
+    "kr": "스타필드 도서관",
+    "cat": "sight",
+    "area": "Gangnam",
+    "notes": "Massive underground mall + the photogenic Starfield Library (free). NW's pick for a rainy day in Gangnam.",
+    "addr": "513 Yeongdong-daero, Gangnam-gu",
+    "cluster": "C",
+    "lat": 37.51253,
+    "lng": 127.05885,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "Seoul Forest Park",
+    "kr": "서울숲",
+    "cat": "sight",
+    "area": "Seongsu",
+    "notes": "Large urban park between Seongsu and the Han River. Good break in a Seongsu/Hannamdong day. Deer enclosure if you want it.",
+    "addr": "273 Ttukseom-ro, Seongdong-gu",
+    "cluster": "E",
+    "lat": 37.54528,
+    "lng": 127.02629,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "National Museum of Korea",
+    "kr": "국립중앙박물관",
+    "cat": "museum",
+    "area": "Yongsan",
+    "notes": "The country's largest museum. Free permanent collection — Korean history from prehistory to modern. NW's pick for a rainy day.",
+    "addr": "137 Seobinggo-ro, Yongsan-gu",
+    "lat": 37.51995,
+    "lng": 126.98639,
+    "src": [
+      "NW"
+    ]
+  },
+  {
+    "name": "N Seoul Tower",
+    "kr": "남산타워",
+    "cat": "sight",
+    "area": "Namsan",
+    "notes": "Iconic at sunset. Cable car or hike up Namsan. Pairs naturally with the Myeongdong/Namdaemun cluster.",
+    "addr": "105 Namsangongwon-gil, Yongsan-gu",
+    "cluster": "B",
+    "lat": 37.5535,
+    "lng": 126.97937,
+    "src": [
+      "NW",
+      "LP"
+    ]
+  },
+  {
+    "name": "Bukchon Hanok Village",
+    "kr": "북촌한옥마을",
+    "cat": "sight",
+    "area": "Bukchon",
+    "notes": "Living neighborhood of preserved hanok between two palaces. Walk early morning before the tour groups arrive.",
+    "addr": "37 Gyedong-gil, Jongno-gu",
+    "cluster": "A",
+    "lat": 37.57905,
+    "lng": 126.98639,
+    "src": [
+      "LP",
+      "NW"
+    ]
+  },
+  {
+    "name": "DMZ",
+    "kr": "DMZ",
+    "cat": "daytrip",
+    "area": "North of Seoul",
+    "notes": "Day tour to the demilitarized zone — Imjingak, Third Tunnel, Dora Observatory. Most tours from Seoul are 6–8 hours. Book in advance, bring passport.",
+    "addr": "Tour pickup from central Seoul",
+    "lat": 37.951,
+    "lng": 126.677,
+    "src": [
+      "LP"
+    ]
+  },
+  {
+    "name": "Lotte World",
+    "kr": "롯데월드",
+    "cat": "daytrip",
+    "area": "Jamsil",
+    "notes": "Indoor amusement park (open year-round) + outdoor Magic Island. K-drama filming location for decades. Adjacent Lotte World Tower has a glass-floor observatory.",
+    "addr": "240 Olympic-ro, Songpa-gu",
+    "lat": 37.5115,
+    "lng": 127.09824,
+    "src": [
+      "LP",
+      "NW"
+    ]
+  }
+]
