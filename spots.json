@@ -46,10 +46,10 @@
     "cat": "food",
     "area": "Yeonnam",
     "notes": "Neighbourhood gem with a warm owner. Fried chicken + tteokbokki. Still by Hand clothes shop downstairs.",
-    "addr": "238-1 Donggyo-ro, Mapo-gu",
+    "addr": "8-3 Donggyo-ro 27-gil, Mapo-gu",
     "cluster": "D",
-    "lat": 37.55175,
-    "lng": 126.90393,
+    "lat": 37.56009,
+    "lng": 126.92122,
     "src": [
       "BBSP"
     ]
@@ -143,10 +143,10 @@
     "cat": "kbbq",
     "area": "Hannamdong",
     "notes": "Premium aged-hanwoo sub-brand of Hanwadam. Both branches within 50m. Typically packed — reserve.",
-    "addr": "65-1 Dokseodang-ro area, Yongsan-gu",
+    "addr": "67 Dokseodang-ro, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.53648,
-    "lng": 127.0118,
+    "lat": 37.53384,
+    "lng": 127.00815,
     "src": [
       "NW"
     ]
@@ -229,9 +229,9 @@
     "cat": "cafe",
     "area": "Ikseon-dong",
     "notes": "One of Seoul's most photogenic cafés — hanok conversion with bamboo entrance, stone path over a stream, soufflé cakes.",
-    "addr": "Ikseon-dong hanok district",
-    "lat": 37.571,
-    "lng": 126.989,
+    "addr": "31-9 Donhwamun-ro 11na-gil, Jongno-gu",
+    "lat": 37.57468,
+    "lng": 126.98978,
     "src": [
       "MK"
     ]
@@ -257,8 +257,8 @@
     "notes": "Bakery-café in a restored hanok near Bukchon. The pandoro covered in powdered sugar is the order. Original branch is in Seongsu in a former metal factory.",
     "addr": "5 Gye-dong-gil, Jongno-gu",
     "cluster": "A",
-    "lat": 37.579,
-    "lng": 126.985,
+    "lat": null,
+    "lng": null,
     "src": [
       "MK"
     ]
@@ -298,10 +298,10 @@
     "area": "Anguk",
     "rank": "#89 Asia",
     "notes": "Cocktail bar in a hanok with a glass inner courtyard. The room is the point as much as the drinks.",
-    "addr": "Near Anguk Station, Jongno-gu",
+    "addr": "66-4 Yulgok-ro 3-gil, Jongno-gu",
     "cluster": "A",
-    "lat": 37.5763,
-    "lng": 126.9852,
+    "lat": 37.57862,
+    "lng": 126.9823,
     "src": [
       "BBSP"
     ]
@@ -426,9 +426,9 @@
     "cat": "bar",
     "area": "Itaewon",
     "notes": "Vinyl sanctuary — walls of LPs, DJ booth at the bar. 4-person table limit. Write song requests on paper. VIBD Signature (cranberry) is the house cocktail. Doors 8:30pm.",
-    "addr": "2F, 164 Hangang-daero, Yongsan-gu (near Samgakji Station L6)",
-    "lat": 37.534,
-    "lng": 126.972,
+    "addr": "164 Hangang-daero, Yongsan-gu",
+    "lat": 37.53341,
+    "lng": 126.97236,
     "src": [
       "EB"
     ]
@@ -541,10 +541,10 @@
     "cat": "club",
     "area": "Hongdae",
     "notes": "One of Seoul's most established clubs. Hip-hop/trap nights alongside electronic.",
-    "addr": "Sangsu-dong, adjacent Hongdae",
+    "addr": "64 Wausan-ro, Mapo-gu",
     "cluster": "D",
-    "lat": 37.5475,
-    "lng": 126.923,
+    "lat": 37.55022,
+    "lng": 126.92327,
     "src": [
       "LP"
     ]
@@ -556,9 +556,9 @@
     "area": "Cheongdam",
     "rank": "Michelin ★★★",
     "notes": "Chef Mingoo Kang's restaurant — modern Korean fine dining built on jang (fermented pastes). One of Asia's most consistently celebrated kitchens.",
-    "addr": "Cheongdam-dong",
-    "lat": 37.5267,
-    "lng": 127.0455,
+    "addr": "19 Dosan-daero 67-gil, Gangnam-gu",
+    "lat": 37.52537,
+    "lng": 127.04416,
     "src": [
       "LP"
     ]
@@ -582,13 +582,13 @@
     "name": "Onjium",
     "kr": "온지음",
     "cat": "fine",
-    "area": "Samcheongdong",
+    "area": "Seochon",
     "rank": "Michelin ★",
     "notes": "Rooted in royal court cuisine (궁중요리), connected to Arumjigi's cultural research. The most culturally grounded tasting menu in Seoul.",
-    "addr": "Samcheongdong, Jongno-gu",
+    "addr": "49 Hyoja-ro, Jongno-gu",
     "cluster": "A",
-    "lat": 37.583,
-    "lng": 126.981,
+    "lat": 37.58056,
+    "lng": 126.97371,
     "src": [
       "LP"
     ]
@@ -613,9 +613,9 @@
     "cat": "retail",
     "area": "Cheongdam",
     "notes": "Korean luxury multi-brand with an editorial eye. One of Seoul's most respected high-end concept stores.",
-    "addr": "Cheongdam-dong",
-    "lat": 37.5267,
-    "lng": 127.0445,
+    "addr": "21 Apgujeong-ro 60-gil, Gangnam-gu",
+    "lat": 37.52638,
+    "lng": 127.04196,
     "src": [
       "BBSP",
       "MK"
@@ -640,9 +640,9 @@
     "cat": "retail",
     "area": "Cheongdam",
     "notes": "The Milan concept store's Seoul outpost. Fashion, design objects, books, café — the full 10CC experience.",
-    "addr": "Cheongdam-dong",
-    "lat": 37.5278,
-    "lng": 127.0468,
+    "addr": "416 Apgujeong-ro, Gangnam-gu",
+    "lat": 37.52693,
+    "lng": 127.04243,
     "src": [
       "BBSP"
     ]
@@ -720,10 +720,10 @@
     "cat": "retail",
     "area": "Anguk",
     "notes": "Multi-brand sister store to the Amomento label — stocks Amomento + curated like-minded labels.",
-    "addr": "Check @shopamomento_store",
+    "addr": "1 Yulgok-ro, Jongno-gu",
     "cluster": "A",
-    "lat": 37.577,
-    "lng": 126.984,
+    "lat": null,
+    "lng": null,
     "src": [
       "MK"
     ]
@@ -832,10 +832,10 @@
     "cat": "brand",
     "area": "Hongdae",
     "notes": "The Korean streetwear reference point. Graphic-heavy, logo-forward, accessible price point.",
-    "addr": "Hongdae flagship",
+    "addr": "32 Jandari-ro, Mapo-gu",
     "cluster": "D",
-    "lat": 37.555,
-    "lng": 126.924,
+    "lat": 37.55162,
+    "lng": 126.91979,
     "src": [
       "LP"
     ]
@@ -846,10 +846,10 @@
     "cat": "museum",
     "area": "Hannamdong",
     "notes": "Three buildings by Mario Botta, Jean Nouvel, and Rem Koolhaas. National treasures alongside Warhol, Rothko, Hirst. One of Asia's serious art institutions.",
-    "addr": "Hannamdong",
+    "addr": "60-16 Itaewon-ro 55-gil, Yongsan-gu",
     "cluster": "E",
-    "lat": 37.5383,
-    "lng": 126.999,
+    "lat": 37.53863,
+    "lng": 126.99684,
     "src": [
       "LP",
       "MK"
@@ -875,10 +875,10 @@
     "cat": "museum",
     "area": "Samcheongdong",
     "notes": "Seoul's most established commercial gallery. Heavyweight Korean modern and contemporary names.",
-    "addr": "Samcheong-ro, Jongno-gu",
+    "addr": "14 Samcheong-ro, Jongno-gu",
     "cluster": "A",
-    "lat": 37.582,
-    "lng": 126.982,
+    "lat": 37.57729,
+    "lng": 126.97991,
     "src": [
       "LP"
     ]
@@ -887,12 +887,12 @@
     "name": "Arumjigi",
     "kr": "아름지기",
     "cat": "museum",
-    "area": "Samcheongdong",
+    "area": "Seochon",
     "notes": "Cultural foundation dedicated to preserving Korean aesthetics. Beautiful building, rotating exhibitions on traditional craft and design. Connected to Onjium.",
-    "addr": "Samcheongdong, Jongno-gu",
+    "addr": "17 Hyoja-ro, Jongno-gu",
     "cluster": "A",
-    "lat": 37.5825,
-    "lng": 126.9815,
+    "lat": 37.57641,
+    "lng": 126.9742,
     "src": [
       "LP"
     ]
