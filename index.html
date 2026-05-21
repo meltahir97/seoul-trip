@@ -47,6 +47,9 @@ body {
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .serif { font-family: "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif; }
 
@@ -149,8 +152,8 @@ header .meta strong { color: var(--ink-2); font-weight: 500; }
 .chip.src-NW   { background: var(--src-nw-bg);   color: var(--src-nw-fg);   border-color: transparent; }
 .chip.src-active { outline: 2px solid var(--ink); outline-offset: 1px; }
 
-.chip.cluster { background: var(--surface); }
-.chip.cluster.active { background: var(--accent); color: white; border-color: var(--accent); }
+.chip.nbr { background: var(--surface); }
+.chip.nbr.active { background: var(--accent); color: white; border-color: var(--accent); }
 
 .actions { margin-left: auto; display: flex; gap: 8px; }
 .btn-reset {
@@ -175,8 +178,8 @@ header .meta strong { color: var(--ink-2); font-weight: 500; }
 .main {
   display: grid;
   grid-template-columns: 1fr 360px;
-  height: calc(100vh - 178px);
-  min-height: 480px;
+  flex: 1;
+  min-height: 0;
 }
 #map { background: #DDD7C7; }
 .leaflet-container { font-family: inherit; }
@@ -382,21 +385,22 @@ header .meta strong { color: var(--ink-2); font-weight: 500; }
   margin-top: 5px;
 }
 
-.cluster-banner {
-  background: var(--accent);
-  color: white;
-  padding: 8px 22px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  display: none;
+.locate-btn {
+  width: 30px !important;
+  height: 30px !important;
+  background: var(--surface) !important;
+  cursor: pointer;
+  display: flex !important;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  color: var(--ink-2);
+  border: none !important;
+  padding: 0 !important;
 }
-.cluster-banner.active { display: flex; }
-.cluster-banner strong { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; white-space: nowrap; }
-.cluster-banner .order { opacity: 0.85; font-size: 12px; }
+.locate-btn:hover { color: var(--ink); background: var(--bg) !important; }
 
 @media (max-width: 760px) {
+  body { overflow: auto; }
   header { padding: 12px 16px 10px; }
   header h1 { font-size: 22px; }
   .controls { padding: 10px 16px; }
@@ -404,8 +408,8 @@ header .meta strong { color: var(--ink-2); font-weight: 500; }
   .main {
     grid-template-columns: 1fr;
     grid-template-rows: 55vh 1fr;
-    height: auto;
-    min-height: calc(100vh - 178px);
+    flex: none;
+    min-height: 0;
   }
   .sidebar {
     border-left: none;
@@ -429,15 +433,10 @@ header .meta strong { color: var(--ink-2); font-weight: 500; }
   <div class="control-row" id="src-filters">
     <span class="control-label">Source</span>
   </div>
-  <div class="control-row" id="cluster-filters">
-    <span class="control-label">Day plan</span>
+  <div class="control-row" id="nbr-filters">
+    <span class="control-label">Neighborhood</span>
     <button class="btn-reset" id="reset-btn">reset all</button>
   </div>
-</div>
-
-<div class="cluster-banner" id="cluster-banner">
-  <strong id="cluster-name"></strong>
-  <span class="order" id="cluster-order"></span>
 </div>
 
 <div class="main">
@@ -478,20 +477,11 @@ const SOURCES = {
   NW:   "Nick Wu"
 };
 
-const CLUSTERS = {
-  A: { name: "Northern Palaces — Bukchon · Anguk · Seochon", order: "Gyeongbokgung → Bukchon walk → Bar Cham or Onjium for dinner" },
-  B: { name: "Central — Myeongdong · Namdaemun · Namsan",    order: "Gwangjang Market → Myeongdong Kyoja → Namdaemun → N Seoul Tower sunset" },
-  C: { name: "Gangnam half-day",                             order: "COEX/Starfield → Hyundai → Sigol Yachae lunch → Apgujeong speakeasies evening" },
-  D: { name: "West — Hongdae · Mangwon · Yeonnam",           order: "Mangwon Market → Anthracite Hongdae → Yeonnam cafés → Chicken Rock dinner" },
-  E: { name: "East — Seongsu · Hannamdong · Itaewon",        order: "Seongsu shopping + Cafe Onion → Seoul Forest → Leeum → Nari's House → Itaewon bars" },
-  F: { name: "Apgujeong speakeasy crawl",                    order: "Zest (ask for Noah) → Pine & Co → Le Chamber → Courte" }
-};
-
 let spots = [];
 
-let activeCats    = new Set();
-let activeSrcs    = new Set();
-let activeCluster = null;
+let activeCats        = new Set();
+let activeSrcs        = new Set();
+let activeNeighborhood = null;
 
 const map = L.map('map', { zoomControl: true, scrollWheelZoom: true }).setView([37.5505, 126.9920], 12);
 
@@ -503,6 +493,30 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 
 const markerLayer = L.layerGroup().addTo(map);
 const markers = new Map();
+
+// Locate-me button
+const LocateControl = L.Control.extend({
+  options: { position: 'topleft' },
+  onAdd() {
+    const btn = L.DomUtil.create('button', 'locate-btn leaflet-bar leaflet-control');
+    btn.title = 'Show my location';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+    L.DomEvent.on(btn, 'click', e => { L.DomEvent.stop(e); map.locate({ setView: true, maxZoom: 15 }); });
+    L.DomEvent.disableClickPropagation(btn);
+    return btn;
+  }
+});
+new LocateControl().addTo(map);
+
+let locMarker = null;
+map.on('locationfound', e => {
+  if (locMarker) { locMarker.remove(); locMarker = null; }
+  locMarker = L.circleMarker(e.latlng, {
+    radius: 10, fillColor: '#4A90E2', color: '#fff',
+    weight: 2.5, opacity: 1, fillOpacity: 0.9
+  }).addTo(map).bindPopup('You are here').openPopup();
+});
+map.on('locationerror', () => alert('Location unavailable or access denied.'));
 
 function buildMarker(spot) {
   const color     = CAT[spot.cat].color;
@@ -561,9 +575,9 @@ function cardHtml(s) {
 }
 
 function passesFilter(s) {
-  if (activeCats.size    && !activeCats.has(s.cat))               return false;
-  if (activeSrcs.size    && !s.src.some(x => activeSrcs.has(x))) return false;
-  if (activeCluster      && s.cluster !== activeCluster)          return false;
+  if (activeCats.size        && !activeCats.has(s.cat))               return false;
+  if (activeSrcs.size        && !s.src.some(x => activeSrcs.has(x))) return false;
+  if (activeNeighborhood     && s.area !== activeNeighborhood)        return false;
   return true;
 }
 
@@ -646,30 +660,25 @@ function buildFilters() {
     srcRow.appendChild(chip);
   });
 
-  // Day plan / cluster chips
-  const cRow = document.getElementById('cluster-filters');
-  Object.entries(CLUSTERS).forEach(([key, c]) => {
+  // Neighborhood chips — built dynamically from spot data
+  const cRow = document.getElementById('nbr-filters');
+  const EXCLUDE_AREAS = new Set(['Unverified', 'North of Seoul']);
+  const areas = [...new Set(spots.map(s => s.area).filter(a => a && !EXCLUDE_AREAS.has(a)))].sort();
+  areas.forEach(area => {
     const chip = document.createElement('span');
-    chip.className = 'chip cluster';
-    chip.dataset.cluster = key;
-    chip.textContent = `${key} — ${c.name.split(' — ')[0]}`;
+    chip.className = 'chip nbr';
+    chip.dataset.area = area;
+    chip.textContent = area;
     chip.addEventListener('click', () => {
-      const wasActive = activeCluster === key;
-      document.querySelectorAll('.chip.cluster').forEach(x => x.classList.remove('active'));
-      if (wasActive) {
-        activeCluster = null;
-        document.getElementById('cluster-banner').classList.remove('active');
-      } else {
-        activeCluster = key;
+      const wasActive = activeNeighborhood === area;
+      document.querySelectorAll('.chip.nbr').forEach(x => x.classList.remove('active'));
+      activeNeighborhood = wasActive ? null : area;
+      if (!wasActive) {
         chip.classList.add('active');
-        const banner = document.getElementById('cluster-banner');
-        banner.classList.add('active');
-        document.getElementById('cluster-name').textContent  = `${key} — ${c.name}`;
-        document.getElementById('cluster-order').textContent = c.order;
-        const clusterSpots = spots.filter(s => s.cluster === key);
-        if (clusterSpots.length > 0) {
-          const bounds = L.latLngBounds(clusterSpots.map(s => [s.lat, s.lng]));
-          map.flyToBounds(bounds, { padding: [40, 40], duration: 0.8 });
+        const nbrSpots = spots.filter(s => s.area === area && s.lat != null);
+        if (nbrSpots.length > 0) {
+          const bounds = L.latLngBounds(nbrSpots.map(s => [s.lat, s.lng]));
+          map.flyToBounds(bounds, { padding: [60, 60], maxZoom: 16, duration: 0.7 });
         }
       }
       render();
@@ -681,11 +690,8 @@ function buildFilters() {
   document.getElementById('reset-btn').addEventListener('click', () => {
     activeCats.clear();
     activeSrcs.clear();
-    activeCluster = null;
-    document.querySelectorAll('.chip').forEach(c => {
-      c.classList.remove('active', 'src-active');
-    });
-    document.getElementById('cluster-banner').classList.remove('active');
+    activeNeighborhood = null;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active', 'src-active'));
     map.flyTo([37.5505, 126.9920], 12, { duration: 0.6 });
     render();
   });
