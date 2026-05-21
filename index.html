@@ -588,6 +588,7 @@ function render() {
   const visible = spots.filter(passesFilter);
 
   visible.forEach(s => {
+    if (s.lat == null || s.lng == null) return;
     const m = buildMarker(s);
     markerLayer.addLayer(m);
     markers.set(s.name, { marker: m, spot: s });
